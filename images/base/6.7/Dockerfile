@@ -1,15 +1,14 @@
 FROM centos:6.7
-MAINTAINER ryanv
+MAINTAINER maxird
 
-ENV JQ_VERSION=1.5
-ENV CONSUL_VERSION=0.6.3
-ENV ENVCONSUL_VERSION=0.6.1
-ENV CONSUL_REPLICATE_VERSION=0.2.0
-ENV CONSUL_TEMPLATE_VERSION=0.13.0
-ENV VAULT_VERSION=0.5.1
-ENV VAULT_SSH_HELPER_VERSION=0.1.1
-
-RUN yum -y update && \
+RUN export JQ_VERSION=1.5 && \
+    export CONSUL_VERSION=0.6.3 && \
+    export ENVCONSUL_VERSION=0.6.1 && \
+    export CONSUL_REPLICATE_VERSION=0.2.0 && \
+    export CONSUL_TEMPLATE_VERSION=0.13.0 && \
+    export VAULT_VERSION=0.5.1 && \
+    export VAULT_SSH_HELPER_VERSION=0.1.1 && \
+    yum -y update && \
     yum -y install \
             curl wget telnet openssh-clients bind-utils nc \
             tar xz bzip bzip2 zip unzip \
