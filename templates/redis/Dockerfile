@@ -12,12 +12,11 @@ RUN export VERSION=APP_VERSION && \
         -e 's|dir \./|dir /opt/redis/data|g' \
         /tmp/redis-${VERSION}/redis.conf > /opt/redis/conf/redis.conf && \
     cp /tmp/redis-${VERSION}/sentinel.conf /opt/redis/conf/ && \
-    yum -y remove gcc make && \
-    yum -y remove cpp glibc-devel glibc-headers kernel-headers libgomp libmpc mpfr && \
-    yum -y clean all && \
-    rm -rf /var/cache/yum/* && \
     cd / && \
     rm -rf /tmp/redis-${VERSION} && \
+    yum -y remove gcc cloog-ppl cpp glibc-devel glibc-headers kernel-headers libgomp libmpc mpfr ppl && \
+    yum -y clean all && \
+    rm -rf /var/cache/yum/* && \
     echo "done"
 
 VOLUME ["/opt/redis/data"]
