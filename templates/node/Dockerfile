@@ -1,7 +1,7 @@
 FROM maxird/BASE_IMAGE:BASE_FROM_VERSION
-ENV VERSION=APP_VERSION
 
-RUN cd /opt && \
+RUN export VERSION=APP_VERSION && \
+    cd /opt && \
     wget -q https://nodejs.org/dist/v${VERSION}/node-v${VERSION}-linux-x64.tar.xz && \
     tar xf node-v${VERSION}-linux-x64.tar.xz && \
     rm node-v${VERSION}-linux-x64.tar.xz && \
