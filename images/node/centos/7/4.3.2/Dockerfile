@@ -1,7 +1,7 @@
 FROM maxird/centos:7
-ENV VERSION=4.3.2
 
-RUN cd /opt && \
+RUN export VERSION=4.3.2 && \
+    cd /opt && \
     wget -q https://nodejs.org/dist/v${VERSION}/node-v${VERSION}-linux-x64.tar.xz && \
     tar xf node-v${VERSION}-linux-x64.tar.xz && \
     rm node-v${VERSION}-linux-x64.tar.xz && \
