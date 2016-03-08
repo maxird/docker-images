@@ -23,6 +23,8 @@ docker pull maxird/keycloak:6-8-1.9.0.Final
 docker pull maxird/keycloak:7-8-1.9.0.Final
 docker pull maxird/node-build:6
 docker pull maxird/node-build:7
+docker pull maxird/node-package:6
+docker pull maxird/node-package:7
 
 popd
 
