@@ -21,7 +21,7 @@ RUN cd /opt && \
       npm -g install bunyan && \
       rm -f node && \
       export BASENAME="node-v${VERSION}-linux-x64" && \
-      export PLATFORM=`cat /etc/system-release | awk '{ print $3 }' | cut -c1` && \
+      export PLATFORM=`cat /etc/system-release | awk '{ if(match($3, /\d*\.\d*/)) print $3; else print $4 }' | cut -c1` && \
       echo "compressing $VERSION" && \
       tar cJf "/tmp/$BASENAME+deps.el${PLATFORM}.tar.xz" "$BASENAME/" ; \
     done && \
