@@ -2,7 +2,7 @@ FROM maxird/centos:6
 
 RUN cd /opt && \
     yum -y install centos-release-scl-rh && \
-    yum -y install make devtoolset-3-gcc devtoolset-3-gcc-c++ && \
+    yum -y install make devtoolset-3-gcc devtoolset-3-gcc-c++ ar && \
     yum -y clean all && \
     rm -rf /var/cache/yum/* && \
     export ALL_VERSIONS="   4.3.2   5.7.1 " && \
@@ -11,12 +11,14 @@ RUN cd /opt && \
     mkdir -p /root/.node-gyp && \
     chmod -R ugo=rwx /root/.node-gyp && \
     chmod -R ugo=rx /root && \
-    mv /opt/rh/devtoolset-3/root/usr/bin/ar /opt/rh/devtoolset-3/root/usr/bin/ar.real && \
-    echo '#!/bin/bash' > /opt/rh/devtoolset-3/root/usr/bin/ar && \
-    echo 'one=$1' >> /opt/rh/devtoolset-3/root/usr/bin/ar && \
-    echo 'shift' >> /opt/rh/devtoolset-3/root/usr/bin/ar && \
-    echo '/opt/rh/devtoolset-3/root/usr/bin/ar.real "${one}D" $@' >> /opt/rh/devtoolset-3/root/usr/bin/ar && \
-    chmod +x /opt/rh/devtoolset-3/root/usr/bin/ar && \
+    export ARROOT=/opt/rh/devtoolset-3/root/usr/bin && \
+    if [ ! -f "$ARROOT/ar" ]; then export ARROOT=/usr/bin ; fi &&
+    mv $ARROOT/ar $ARROOT/ar.real && \
+    echo '#!/bin/bash' > $ARROOT/ar && \
+    echo 'one=$1' >> $ARROOT/ar && \
+    echo 'shift' >> $ARROOT/ar && \
+    echo "$ARROOT/ar.real \"\${one}D\" \$@" >> $ARROOT/ar && \
+    chmod +x $ARROOT/ar && \
     for VERSION in $ALL_VERSIONS; do \
       echo "downloading $VERSION" && \
       wget -q https://nodejs.org/dist/v${VERSION}/node-v${VERSION}-linux-x64.tar.xz && \
