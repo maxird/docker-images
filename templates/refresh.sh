@@ -21,8 +21,8 @@ docker pull maxird/cordra:6-8-1.0.7
 docker pull maxird/cordra:7-8-1.0.7
 docker pull maxird/keycloak:6-8-1.9.0.Final
 docker pull maxird/keycloak:7-8-1.9.0.Final
-docker pull maxird/node-build:6-4.3.2-0
-docker pull maxird/node-build:7-4.3.2-0
+docker pull maxird/node-build:6
+docker pull maxird/node-build:7
 
 popd
 
