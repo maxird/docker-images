@@ -12,7 +12,7 @@ RUN cd /opt && \
     chmod -R ugo=rwx /root/.node-gyp && \
     chmod -R ugo=rx /root && \
     export ARROOT=/opt/rh/devtoolset-3/root/usr/bin && \
-    if [ ! -f "$ARROOT/ar" ]; then export ARROOT=/usr/bin ; fi &&
+    if [ ! -f "$ARROOT/ar" ]; then export ARROOT=/usr/bin ; fi && \
     mv $ARROOT/ar $ARROOT/ar.real && \
     echo '#!/bin/bash' > $ARROOT/ar && \
     echo 'one=$1' >> $ARROOT/ar && \
