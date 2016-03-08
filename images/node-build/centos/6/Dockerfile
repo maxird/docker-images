@@ -1,11 +1,11 @@
-FROM maxird/BASE_IMAGE:BASE_FROM_VERSION
+FROM maxird/centos:6
 
 RUN cd /opt && \
     yum -y install centos-release-scl-rh && \
     yum -y install make devtoolset-3-gcc devtoolset-3-gcc-c++ && \
     yum -y clean all && \
     rm -rf /var/cache/yum/* && \
-    export ALL_VERSIONS="APP_VERSION" && \
+    export ALL_VERSIONS="   4.1.2   4.2.6   4.3.1   4.3.2   5.7.0   5.7.1 " && \
     export SAVED_PATH=$PATH && \
     export PATH=$PATH:/opt/node/bin && \
     for VERSION in $ALL_VERSIONS; do \

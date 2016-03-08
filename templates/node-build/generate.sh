@@ -8,26 +8,29 @@ function process
 {
   image=$1
   base=$2
-  version=$3
-  outpath="$OUTDIR/$image/$base/$version"
+  versions=$3
+  outpath="$OUTDIR/$image/$base"
   mkdir -p "$outpath"
   sed \
-      -e "s|BASE_IMAGE|$image|" \
-      -e "s|BASE_FROM_VERSION|$base|" \
-      -e "s|APP_VERSION|$version|" \
+      -e "s|BASE_IMAGE|$image|g" \
+      -e "s|BASE_FROM_VERSION|$base|g" \
+      -e "s|APP_VERSION|$versions|g" \
       Dockerfile > "$outpath/Dockerfile"
 }
 
-BASE_IMAGE="node"
+BASE_IMAGE="centos"
 
-BASES="6-4.3.2 7-4.3.2"
+BASES="6 7"
 
 VERSIONS=" \
-  0 \
+  4.1.2 \
+  4.2.6 \
+  4.3.1 \
+  4.3.2 \
+  5.7.0 \
+  5.7.1 \
 "
 
 for b in $BASES; do
-  for v in $VERSIONS; do
-    process $BASE_IMAGE $b $v
-  done
+  process $BASE_IMAGE $b "$VERSIONS"
 done
