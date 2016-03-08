@@ -14,6 +14,10 @@ fi
 echo '------------------------------------'
 echo 'Bootstrap package build'
 echo '------------------------------------'
+mkdir -p /root/.node-gyp
+chmod -R ugo=rx /root
+chmod -R ugo=rwx /root/.node-gyp
+
 cd /app
 mkdir -p out
 cp /tmp/package.json .
