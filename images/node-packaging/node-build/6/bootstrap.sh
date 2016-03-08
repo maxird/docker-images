@@ -14,7 +14,7 @@ fi
 echo '------------------------------------'
 echo 'Bootstrap package build'
 echo '------------------------------------'
-cd /packaging
+cd /app
 mkdir -p out
 cp /tmp/package.json .
 scl enable devtoolset-3 ./package.sh
