@@ -7,5 +7,6 @@ RUN export VERSION=0 && \
     rm -rf /var/cache/yum/* && \
     cd /opt && \
     export BASENAME=`/bin/ls -d node-*` && \
-    tar cJf "/tmp/$BASENAME+deps.tar.xz" "$BASENAME/" && \
+    export PLATFORM=`cat /etc/system-release | awk '{ print $3 }' | cut -c1` && \
+    tar cJf "/tmp/$BASENAME+deps.el${PLATFORM}.tar.xz" "$BASENAME/" && \
     echo "done"
