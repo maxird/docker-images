@@ -23,6 +23,6 @@ RUN cd /opt && \
       export BASENAME="node-v${VERSION}-linux-x64" && \
       export PLATFORM=`cat /etc/system-release | awk '{ if(match($3, /\d*\.\d*/)) print $3; else print $4 }' | cut -c1` && \
       echo "compressing $VERSION" && \
-      tar cJf "/tmp/$BASENAME+deps.el${PLATFORM}.tar.xz" "$BASENAME/" ; \
+      tar cJf "/tmp/$BASENAME+deps.el${PLATFORM}.tar.xz" "$BASENAME/" --mtime=20160101 --owner 0 --group 0 --no-xattrs ; \
     done && \
     echo "done"

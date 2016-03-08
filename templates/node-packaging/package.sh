@@ -35,7 +35,7 @@ echo "return code $?"
 
 echo creating tarfile
 sleep 3s
-tar cJf $TARFILE node_modules/
+tar cJf $TARFILE node_modules/ --mtime=20160101 --owner 0 --group 0 --no-xattrs
 
 rm -rf node_modules
 echo '------------------------------------'
