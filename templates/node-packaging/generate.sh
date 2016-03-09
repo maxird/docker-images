@@ -24,7 +24,7 @@ BASE_IMAGE="node-build"
 
 BASES="6 7"
 
-NODE_VERSION="4.3.2"
+NODE_VERSION="4.4.0"
 
 for b in $BASES; do
   process $BASE_IMAGE $b $NODE_VERSION
