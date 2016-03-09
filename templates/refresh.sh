@@ -11,6 +11,8 @@ docker pull maxird/java:6-8
 docker pull maxird/java:7-8
 docker pull maxird/node:6-4.3.2
 docker pull maxird/node:7-4.3.2
+docker pull maxird/node:6-4.4.0
+docker pull maxird/node:7-4.4.0
 docker pull maxird/redis:6-3.0.7
 docker pull maxird/redis:7-3.0.7
 docker pull maxird/activemq:6-8-5.13.2
