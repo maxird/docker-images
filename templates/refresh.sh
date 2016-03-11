@@ -27,6 +27,7 @@ docker pull maxird/node-build:6
 docker pull maxird/node-build:7
 docker pull maxird/node-package:6
 docker pull maxird/node-package:7
+docker pull maxird/ansible:latest
 
 popd
 
