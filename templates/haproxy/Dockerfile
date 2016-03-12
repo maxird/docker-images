@@ -5,7 +5,7 @@ RUN yum -y install \
             openssl && \
     yum -y clean all && \
     rm -rf /var/cache/yum/* && \
-    rf -f /etc/haproxy/haproxy.cfg && \
+    rm -f /etc/haproxy/haproxy.cfg && \
     echo 'done'
 
 VOLUME ["/etc/haproxy"]
