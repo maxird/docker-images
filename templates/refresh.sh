@@ -9,8 +9,6 @@ docker pull maxird/centos:6
 docker pull maxird/centos:7
 docker pull maxird/java:6-8
 docker pull maxird/java:7-8
-docker pull maxird/node:6-4.3.2
-docker pull maxird/node:7-4.3.2
 docker pull maxird/node:6-4.4.0
 docker pull maxird/node:7-4.4.0
 docker pull maxird/redis:6-3.0.7
@@ -27,6 +25,8 @@ docker pull maxird/node-build:6
 docker pull maxird/node-build:7
 docker pull maxird/node-package:6
 docker pull maxird/node-package:7
+docker pull maxird/haproxy:6
+docker pull maxird/haproxy:7
 docker pull maxird/ansible:latest
 
 popd
