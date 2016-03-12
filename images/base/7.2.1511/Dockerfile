@@ -16,7 +16,7 @@ RUN export JQ_VERSION=1.5 && \
             scl-utils \
             openssh-clients \
             haproxy openssl \
-            sudo strace net-tools iproute \
+            sudo strace net-tools iproute dnsmasq \
             selinux-policy policycoreutils policycoreutils-python \
             libselinux-python libsemanage-python \
             python \
@@ -24,7 +24,13 @@ RUN export JQ_VERSION=1.5 && \
     yum -y install \
             python-pip \
             htop && \
+    yum -y install gcc python-devel && \
     pip install --upgrade pip && \
+    pip install --upgrade ansible && \
+    pip install --upgrade docker-py && \
+    pip install --upgrade python-consul && \
+    pip install --upgrade pyhcl && \
+    yum -y erase gcc python-devel cpp glibc-devel glibc-headers kernel-headers && \
     yum -y clean all && \
     rm -rf /var/cache/yum/* && \
     rm -rf /root/.cache && \
