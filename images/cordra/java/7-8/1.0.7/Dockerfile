@@ -24,4 +24,6 @@ RUN export VERSION=1.0.7 && \
 
 EXPOSE 8080
 
+VOLUME /opt/cordra/data
+
 ENTRYPOINT /opt/cordra/startup

@@ -1,11 +1,6 @@
 FROM maxird/BASE_IMAGE:BASE_FROM_VERSION
 
-RUN yum -y install \
-        python-pip \
-        policycoreutils-python \
-        libselinux-python \
-        && \
-    pip install --upgrade pip && \
+RUN pip install --upgrade pip && \
     pip install --upgrade ansible && \
     pip install --upgrade docker-py && \
     pip install --upgrade python-consul && \

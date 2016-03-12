@@ -9,8 +9,17 @@ RUN export VERSION=1.9.0.Final && \
     "realm" : "master", \
     "users" : [ {"username" : "admin", "enabled" : true, \
     "credentials" : [ {"type" : "password", "value" : "admin"} ], \
-    "realmRoles" : [ "admin" ]} ]} ]' > /opt/keycloak/standalone/configuration/keycloak-add-user.json
+    "realmRoles" : [ "admin" ]} ]} ]' > /opt/keycloak/standalone/configuration/keycloak-add-user.json && \
+    mkdir -p /opt/keycloak/standalone/data && \
+    mkdir -p /opt/keycloak/standalone/log && \
+    mkdir -p /opt/keycloak/standalone/tmp && \
+    echo 'done'
 
 EXPOSE 8080
+
+VOLUME /opt/keycloak/standalone/data
+VOLUME /opt/keycloak/standalone/log
+VOLUME /opt/keycloak/standalone/tmp
+
 
 ENTRYPOINT ["/opt/keycloak/bin/standalone.sh", "-Djboss.bind.address=0.0.0.0"]

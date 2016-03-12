@@ -1,11 +1,6 @@
 FROM maxird/centos:7
 
-RUN yum -y install \
-        python-pip \
-        policycoreutils-python \
-        libselinux-python \
-        && \
-    pip install --upgrade pip && \
+RUN pip install --upgrade pip && \
     pip install --upgrade ansible && \
     pip install --upgrade docker-py && \
     pip install --upgrade python-consul && \

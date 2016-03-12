@@ -5,7 +5,7 @@ RUN export JQ_VERSION=1.5 && \
     export CONSUL_VERSION=0.6.3 && \
     export ENVCONSUL_VERSION=0.6.1 && \
     export CONSUL_REPLICATE_VERSION=0.2.0 && \
-    export CONSUL_TEMPLATE_VERSION=0.13.0 && \
+    export CONSUL_TEMPLATE_VERSION=0.14.0 && \
     export VAULT_VERSION=0.5.1 && \
     export VAULT_SSH_HELPER_VERSION=0.1.1 && \
     yum -y update && \
@@ -15,16 +15,20 @@ RUN export JQ_VERSION=1.5 && \
             which \
             scl-utils \
             openssh-clients \
-            sudo strace \
-            policycoreutils policycoreutils-python \
+            haproxy openssl \
+            sudo strace net-tools iproute \
+            selinux-policy policycoreutils policycoreutils-python \
             libselinux-python libsemanage-python \
             python \
             epel-release && \
     yum -y install \
-            ansible \
+            python-pip \
             htop && \
+    pip install --upgrade pip && \
     yum -y clean all && \
     rm -rf /var/cache/yum/* && \
+    rm -rf /root/.cache && \
+    rm -r /etc/haproxy/haproxy.cfg && \
     wget -q -O /usr/local/bin/jq https://github.com/stedolan/jq/releases/download/jq-${JQ_VERSION}/jq-linux64 && \
     chmod +x /usr/local/bin/jq && \
     cd /usr/local/bin && \
