@@ -1,0 +1,39 @@
+global
+  # log /var/log/haproxy    local0
+  # log /dev/log    local1 notice
+  chroot /var/lib/haproxy
+  stats socket /tmp/admin.sock mode 660 level admin
+  stats timeout 30s
+  user haproxy
+  group haproxy
+
+defaults
+  log     global
+  mode    http
+  option  httplog
+  option  dontlognull
+  option  forwardfor
+  option  http-server-close
+  balance roundrobin
+  timeout connect 5000
+  timeout client  50000
+  timeout server  50000
+
+listen stats
+  bind  *:1936
+  stats enable
+  stats uri /
+  stats hide-version
+  stats auth admin:PROXY_PASSWORD
+
+frontend PROXY_SERVICE
+  bind            *:PROXY_PORT
+  http-request    set-header X-Forwarded-Port %[dst_port]
+  default_backend lb
+
+{{ $color := key_or_default "PROXY_COLOR_PATH/PROXY_SERVICE" "NONE" | trimSpace }}
+{{ $service := (print "PROXY_TAGPROXY_SERVICE-" $color "PROXY_DC") }}
+# service is {{ $service }}
+# color is {{ $color }}
+backend lb{{ range service $service }}
+  server PROXY_SERVICE-{{$color}}-{{.Address}}-{{.Port}} {{.Address}}:{{.Port}} check{{end}}
