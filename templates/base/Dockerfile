@@ -2,11 +2,11 @@ FROM centos:BASE_FROM_VERSION
 MAINTAINER maxird
 
 RUN export JQ_VERSION=1.5 && \
-    export CONSUL_VERSION=0.6.3 && \
+    export CONSUL_VERSION=0.6.4 && \
     export ENVCONSUL_VERSION=0.6.1 && \
     export CONSUL_REPLICATE_VERSION=0.2.0 && \
     export CONSUL_TEMPLATE_VERSION=0.14.0 && \
-    export VAULT_VERSION=0.5.1 && \
+    export VAULT_VERSION=0.5.2 && \
     export VAULT_SSH_HELPER_VERSION=0.1.1 && \
     yum -y update && \
     yum -y install \
@@ -45,7 +45,4 @@ RUN export JQ_VERSION=1.5 && \
     wget -q -O - https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip | python -c "import zipfile,sys,StringIO;zipfile.ZipFile(StringIO.StringIO(sys.stdin.read())).extractall('.')" && \
     wget -q -O - https://releases.hashicorp.com/vault-ssh-helper/${VAULT_SSH_HELPER_VERSION}/vault-ssh-helper_${VAULT_SSH_HELPER_VERSION}_linux_amd64.zip | python -c "import zipfile,sys,StringIO;zipfile.ZipFile(StringIO.StringIO(sys.stdin.read())).extractall('.')" && \
     chmod +x consul* envconsul vault* && \
-    mkdir -p /usr/local/lib/consul/ui && \
-    cd /usr/local/lib/consul/ui && \
-    wget -q -O - https://releases.hashicorp.com/consul/${CONSUL_VERSION}/consul_${CONSUL_VERSION}_web_ui.zip | python -c "import zipfile,sys,StringIO;zipfile.ZipFile(StringIO.StringIO(sys.stdin.read())).extractall('.')" && \
     mkdir -p /etc/consul.d
