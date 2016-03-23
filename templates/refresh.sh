@@ -28,6 +28,8 @@ docker pull maxird/node-package:7
 docker pull maxird/haproxy:6
 docker pull maxird/haproxy:7
 docker pull maxird/ansible:latest
+docker pull maxird/lbcolor
+docker pull maxird/lbapp
 
 popd
 

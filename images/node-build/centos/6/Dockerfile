@@ -5,7 +5,7 @@ RUN cd /opt && \
     yum -y install make devtoolset-3-gcc devtoolset-3-gcc-c++ ar && \
     yum -y clean all && \
     rm -rf /var/cache/yum/* && \
-    export ALL_VERSIONS="   4.3.2   4.4.0   5.7.1   5.8.0   5.9.0 " && \
+    export ALL_VERSIONS="   4.3.2   4.4.0   4.4.1   5.7.1   5.8.0   5.9.0 " && \
     export SAVED_PATH=$PATH && \
     export PATH=$PATH:/opt/node/bin && \
     mkdir -p /root/.node-gyp && \
