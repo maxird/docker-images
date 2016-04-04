@@ -24,6 +24,7 @@ BASES="6-8 7-8"
 
 VERSIONS=" \
   8.0.32 \
+  8.0.33 \
 "
 
 for b in $BASES; do
