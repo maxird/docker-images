@@ -24,6 +24,7 @@ BASES="6 7"
 
 VERSIONS=" \
   8u74b02 \
+  8u77b03 \
 "
 
 for b in $BASES; do
