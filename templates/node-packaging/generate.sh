@@ -32,6 +32,7 @@ NODE_VERSION=" \
   5.9.0 \
   5.10.0 \
   5.10.1 \
+  5.11.0 \
 "
 
 for b in $BASES; do
