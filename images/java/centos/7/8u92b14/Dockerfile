@@ -1,6 +1,6 @@
-FROM maxird/centos:6
+FROM maxird/centos:7
 
-RUN export FULL_VERSION=8792b14 && \
+RUN export FULL_VERSION=8u92b14 && \
     export VERSION=`echo $FULL_VERSION | sed -e 's|b.*||'` && \
     export BUILD=`echo $FULL_VERSION | sed -e 's|.*b||'` && \
     cd /tmp && \
