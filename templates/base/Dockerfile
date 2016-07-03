@@ -23,6 +23,7 @@ RUN export JQ_VERSION=1.5 && \
             epel-release && \
     yum -y install \
             python-pip \
+            openssl-devel \
             python-cffi \
             libffi-devel \
             htop && \
