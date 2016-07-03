@@ -23,6 +23,8 @@ RUN export JQ_VERSION=1.5 && \
             epel-release && \
     yum -y install \
             python-pip \
+            python-cffi \
+            libffi-devel \
             htop && \
     yum -y install gcc python-devel && \
     pip install --upgrade pip && \
