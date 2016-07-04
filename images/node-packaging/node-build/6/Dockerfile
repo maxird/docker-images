@@ -1,6 +1,6 @@
 FROM maxird/node-build:6
 
-ENV NODE_VERSION=4.4.5
+ENV NODE_VERSION=4.4.7
 
 ADD bootstrap.sh /app/
 ADD package.sh /app/

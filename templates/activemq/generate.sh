@@ -23,8 +23,6 @@ BASE_IMAGE="java"
 BASES="6-8 7-8"
 
 VERSIONS=" \
-  5.13.1 \
-  5.13.2 \
   5.13.3 \
 "
 

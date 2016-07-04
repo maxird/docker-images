@@ -23,10 +23,7 @@ BASE_IMAGE="centos"
 BASES="6 7"
 
 VERSIONS=" \
-  4.4.5 \
-  4.4.6 \
   4.4.7 \
-  6.2.2 \
 "
 
 for b in $BASES; do
