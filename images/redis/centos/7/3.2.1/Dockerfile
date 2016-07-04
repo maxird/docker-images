@@ -1,7 +1,9 @@
 FROM maxird/centos:7
 
 RUN export VERSION=3.2.1 && \
+    yum -y clean all && \
     yum -y install gcc make && \
+    yum -y clean all && \
     cd /tmp && \
     wget -q http://download.redis.io/releases/redis-${VERSION}.tar.gz -O - | tar -xvz && \
     (cd /tmp/redis-${VERSION} && make install) && \

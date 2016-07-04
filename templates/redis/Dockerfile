@@ -1,7 +1,9 @@
 FROM maxird/BASE_IMAGE:BASE_FROM_VERSION
 
 RUN export VERSION=APP_VERSION && \
+    yum -y clean all && \
     yum -y install gcc make && \
+    yum -y clean all && \
     cd /tmp && \
     wget -q http://download.redis.io/releases/redis-${VERSION}.tar.gz -O - | tar -xvz && \
     (cd /tmp/redis-${VERSION} && make install) && \
