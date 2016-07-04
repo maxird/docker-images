@@ -1,6 +1,6 @@
 FROM maxird/java:6-8
 
-RUN export VERSION=1.9.2.Final && \
+RUN export VERSION=1.9.8.Final && \
     cd /opt && \
     wget -q "http://downloads.jboss.org/keycloak/${VERSION}/keycloak-${VERSION}.tar.gz" -O - | tar -xvz && \
     ln -s keycloak-${VERSION} keycloak && \
