@@ -9,6 +9,8 @@ RUN export JQ_VERSION=1.5 && \
     export VAULT_VERSION=0.6.0 && \
     export VAULT_SSH_HELPER_VERSION=0.1.1 && \
     yum -y update && \
+    yum -y install epel-release && \
+    yum -y install centos-release-scl-rh && \
     yum -y install \
             curl wget telnet openssh-clients bind-utils nc \
             tar xz bzip bzip2 zip unzip \
@@ -19,8 +21,7 @@ RUN export JQ_VERSION=1.5 && \
             sudo strace net-tools iproute dnsmasq \
             selinux-policy policycoreutils policycoreutils-python \
             libselinux-python libsemanage-python \
-            python \
-            epel-release && \
+            python && \
     yum -y install \
             python-pip \
             openssl-devel \
@@ -49,4 +50,6 @@ RUN export JQ_VERSION=1.5 && \
     wget -q -O - https://releases.hashicorp.com/vault-ssh-helper/${VAULT_SSH_HELPER_VERSION}/vault-ssh-helper_${VAULT_SSH_HELPER_VERSION}_linux_amd64.zip | python -c "import zipfile,sys,StringIO;zipfile.ZipFile(StringIO.StringIO(sys.stdin.read())).extractall('.')" && \
     chmod +x consul* envconsul vault* && \
     mkdir -p /etc/consul.d && \
+    yum -y clean all && \
+    rm -rf /var/cache/yum/* && \
     yum -y clean all
