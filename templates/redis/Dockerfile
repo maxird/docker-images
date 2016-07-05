@@ -19,6 +19,7 @@ RUN export VERSION=APP_VERSION && \
     yum -y remove gcc cloog-ppl cpp glibc-devel glibc-headers kernel-headers libgomp libmpc mpfr ppl && \
     yum -y clean all && \
     rm -rf /var/cache/yum/* && \
+    yum -y clean all && \
     echo "done"
 
 VOLUME ["/opt/redis/data"]
