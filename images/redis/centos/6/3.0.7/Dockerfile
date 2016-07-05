@@ -2,6 +2,7 @@ FROM maxird/centos:6
 
 RUN export VERSION=3.0.7 && \
     yum -y clean all && \
+    touch /var/lib/rpm/* && \
     yum -y install gcc make && \
     yum -y clean all && \
     cd /tmp && \

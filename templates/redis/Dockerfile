@@ -2,6 +2,7 @@ FROM maxird/BASE_IMAGE:BASE_FROM_VERSION
 
 RUN export VERSION=APP_VERSION && \
     yum -y clean all && \
+    touch /var/lib/rpm/* && \
     yum -y install gcc make && \
     yum -y clean all && \
     cd /tmp && \
