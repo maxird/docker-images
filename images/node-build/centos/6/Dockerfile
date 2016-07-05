@@ -5,6 +5,7 @@ RUN cd /opt && \
     yum -y install make devtoolset-3-gcc devtoolset-3-gcc-c++ ar && \
     yum -y clean all && \
     rm -rf /var/cache/yum/* && \
+    yum -y clean all && \
     export ALL_VERSIONS="   4.4.7 " && \
     export SAVED_PATH=$PATH && \
     export PATH=$PATH:/opt/node/bin && \
