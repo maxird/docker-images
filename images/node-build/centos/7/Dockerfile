@@ -27,9 +27,10 @@ RUN cd /opt && \
       rm node-v${VERSION}-linux-x64.tar.xz && \
       ln -s node-v${VERSION}-linux-x64 node && \
       echo "installing $VERSION" && \
-      npm -g upgrade npm && \
-      npm -g install nodemon && \
-      npm -g install bunyan && \
+      npm -g upgrade npm --log-level=warn && \
+      npm -g install nodemon --production --log-level=warn && \
+      npm -g install bunyan --production --log-level=warn && \
+      npm -g install nsp --production --log-level=warn && \
       rm -f node && \
       export BASENAME="node-v${VERSION}-linux-x64" && \
       export PLATFORM=`cat /etc/system-release | awk '{ if(match($3, /\d*\.\d*/)) print $3; else print $4 }' | cut -c1` && \

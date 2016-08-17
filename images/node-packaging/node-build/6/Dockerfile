@@ -4,6 +4,7 @@ ENV NODE_VERSION=4.4.7
 
 ADD bootstrap.sh /app/
 ADD package.sh /app/
+ADD nsp-check-deep.sh /app/
 
 WORKDIR /app
 

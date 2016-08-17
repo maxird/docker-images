@@ -1,5 +1,6 @@
 #!/bin/bash
 # this script is run in the scl wrapped process
+SRCDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 echo '------------------------------------'
 echo 'Packaging script'
@@ -30,10 +31,17 @@ cat package.json
 
 ## perform the build
 ##
-npm install --production
-echo "return code $?"
+npm install --production --log-level=warn
+npm_result=$?
+echo "npm return code $npm_result"
 
-echo creating tarfile
+## run the nsp check
+##
+$SRCDIR/nsp-check-deep.sh
+nsp_result=$?
+echo "nsp return code $nsp_result"
+
+echo creating tarfile $TARFILE
 sleep 3s
 tar cJf $TARFILE node_modules/ --mtime='2016-01-02T10:30:00' --owner 0 --group 0 --no-xattrs
 
