@@ -1,3 +1,3 @@
 FROM maxird/centos:7
 
-# everything is bundled into the base now
+RUN pip install ansible==2.1.0.0
