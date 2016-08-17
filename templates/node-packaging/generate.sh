@@ -18,6 +18,7 @@ function process
       Dockerfile > "$outpath/Dockerfile"
   cp $SRCDIR/bootstrap.sh $outpath/bootstrap.sh
   cp $SRCDIR/package.sh $outpath/package.sh
+  cp $SRCDIR/nsp-check-deep.sh $outpath/nsp-check-deep.sh
 }
 
 BASE_IMAGE="node-build"
