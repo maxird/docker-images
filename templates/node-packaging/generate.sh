@@ -26,6 +26,8 @@ BASES="6 7"
 
 NODE_VERSION=" \
   4.4.7 \
+  4.5.0 \
+  6.4.0 \
 "
 
 for b in $BASES; do
