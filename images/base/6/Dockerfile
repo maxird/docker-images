@@ -1,4 +1,4 @@
-FROM centos:BASE_FROM_VERSION
+FROM centos:6
 MAINTAINER maxird
 
 RUN export JQ_VERSION=1.5 && \

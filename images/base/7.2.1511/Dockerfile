@@ -6,7 +6,7 @@ RUN export JQ_VERSION=1.5 && \
     export ENVCONSUL_VERSION=0.6.1 && \
     export CONSUL_REPLICATE_VERSION=0.2.0 && \
     export CONSUL_TEMPLATE_VERSION=0.15.0 && \
-    export VAULT_VERSION=0.6.0 && \
+    export VAULT_VERSION=0.6.1 && \
     export VAULT_SSH_HELPER_VERSION=0.1.1 && \
     yum -y update && \
     yum -y install epel-release && \
