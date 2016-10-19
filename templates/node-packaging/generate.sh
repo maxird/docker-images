@@ -26,12 +26,8 @@ BASE_IMAGE="node-build"
 BASES="6 7"
 
 NODE_VERSION=" \
-  4.4.7 \
-  4.5.0 \
-  4.6.0 \
-  6.4.0 \
-  6.5.0 \
-  6.7.0 \
+  4.6.1 \
+  6.9.0 \
 "
 
 for b in $BASES; do
