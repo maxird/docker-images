@@ -23,7 +23,9 @@ BASE_IMAGE="centos"
 BASES="6 7"
 
 VERSIONS=" \
+  4.6.0 \
   4.6.1 \
+  6.7.0 \
   6.9.0 \
 "
 
