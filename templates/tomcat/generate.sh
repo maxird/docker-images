@@ -27,6 +27,7 @@ VERSIONS=" \
   8.0.39 \
   8.5.6 \
   8.5.8 \
+  8.5.9 \
 "
 
 for b in $BASES; do
