@@ -23,7 +23,7 @@ BASE_IMAGE="centos"
 BASES="6 7"
 
 VERSIONS=" \
-  8u112b15 \
+  8u121b13 \
 "
 
 for b in $BASES; do
