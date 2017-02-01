@@ -1,7 +1,5 @@
 FROM maxird/BASE_IMAGE:BASE_FROM_VERSION
 
-ENV NODE_VERSION=APP_VERSION
-
 ADD bootstrap.sh /app/
 ADD package.sh /app/
 ADD nsp-check-deep.sh /app/
