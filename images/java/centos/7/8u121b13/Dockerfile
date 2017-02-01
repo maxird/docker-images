@@ -1,11 +1,12 @@
 FROM maxird/centos:7
 
 RUN export FULL_VERSION=8u121b13 && \
+    export JDK_UUID=e9e7ea248e2c4826b92b3f075a80e441 && \
     export VERSION=`echo $FULL_VERSION | sed -e 's|b.*||'` && \
     export BUILD=`echo $FULL_VERSION | sed -e 's|.*b||'` && \
     cd /tmp && \
     export COOKIE="Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" && \
-    export URL="http://download.oracle.com/otn-pub/java/jdk/${VERSION}-b${BUILD}/jdk-${VERSION}-linux-x64.rpm" && \
+    export URL="http://download.oracle.com/otn-pub/java/jdk/${VERSION}-b${BUILD}/${JDK_UUID}/jdk-${VERSION}-linux-x64.rpm" && \
     wget -q -t 5 --retry-connrefused --no-cookies --no-check-certificate --header "$COOKIE" "$URL" && \
     export URL="http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip" && \
     wget -q -t 5 --retry-connrefused --no-cookies --no-check-certificate --header "$COOKIE" "$URL" && \
