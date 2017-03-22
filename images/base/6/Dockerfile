@@ -2,12 +2,12 @@ FROM centos:6
 MAINTAINER maxird
 
 RUN export JQ_VERSION=1.5 && \
-    export CONSUL_VERSION=0.7.4 && \
+    export CONSUL_VERSION=0.7.5 && \
     export CONSUL_REPLICATE_VERSION=0.3.1 && \
     export CONSUL_TEMPLATE_VERSION=0.18.1 && \
     export ENVCONSUL_VERSION=0.6.2 && \
-    export VAULT_VERSION=0.6.5 && \
-    export VAULT_SSH_HELPER_VERSION=0.1.2 && \
+    export VAULT_VERSION=0.7.0 && \
+    export VAULT_SSH_HELPER_VERSION=0.1.3 && \
     yum -y update && \
     yum -y install epel-release && \
     yum -y install centos-release-scl-rh && \
