@@ -8,4 +8,6 @@ RUN yum install -y ntp git bind-utils gawk curl wget tar xz gzip bzip2 zip unzip
     mkdir -p /etc/ansible/hosts && \
     echo '[local]' > /etc/ansible/hosts/inventory && \
     echo 'localhost ansible_connection=local' >> /etc/ansible/hosts/inventory && \
+    yum install -y centos-release-scl && \
+    yum install -y ruby200 ruby200-ruby-devel && \
     echo done
