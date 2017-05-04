@@ -25,14 +25,14 @@ BASE_IMAGE="centos"
 BASES="6 7"
 
 VERSIONS=" \
-  8u121b13 \
+  8u121b13:e9e7ea248e2c4826b92b3f075a80e441 \
+  8u131b11:d54c1d3a095b4ff2b6607d096fa80163 \
 "
-
-# this changes on each release
-JDK_UUID="e9e7ea248e2c4826b92b3f075a80e441"
 
 for b in $BASES; do
   for v in $VERSIONS; do
-    process $BASE_IMAGE $b $v $JDK_UUID
+    version=$(echo $v | awk -F ':' '{print $1}')
+    uuid=$(echo $v | awk -F ':' '{print $2}')
+    process $BASE_IMAGE $b $version $uuid
   done
 done

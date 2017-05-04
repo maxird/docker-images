@@ -30,6 +30,8 @@ rm package.json
 #
 cp /tmp/node-v${NODE_VERSION}-*.tar.xz ./out/
 mv node-modules* ./out/
+mv package.nsp.json ./out/
 if [ "$HOST_OS" = "Linux" ]; then
   chown $HOST_USER ./out/node-*.tar.xz
+  chown $HOST_USER ./out/package.nsp.json
 fi
