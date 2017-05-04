@@ -8,10 +8,21 @@ cp package.json $out
 echo "scanning node_modules folder for packages"
 cd node_modules
 for module in $(/bin/ls -1 -d *); do
-  version=$(cat $module/package.json | jq -r .version)
-  # echo "$module -> $version"
-  cat ../$out | jq ".dependencies[\"$module\"] = \"$version\"" > "../$out.tmp"
-  mv "../$out.tmp" ../$out
+  if [ -f $module/package.json ]; then
+    version=$(cat $module/package.json | jq -r .version)
+    # echo "$module -> $version"
+    cat ../$out | jq ".dependencies[\"$module\"] = \"$version\"" > "../$out.tmp"
+    mv "../$out.tmp" ../$out
+  else
+    cd $module
+    for submodule in $(/bin/ls -1 -d *); do
+      version=$(cat $submodule/package.json | jq -r .version)
+      # echo "$module -> $version"
+      cat ../../$out | jq ".dependencies[\"$module\"] = \"$version\"" > "../../$out.tmp"
+      mv "../../$out.tmp" ../../$out
+    done
+    cd ..
+  fi
 done
 cd ..
 
