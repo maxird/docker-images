@@ -2,7 +2,7 @@
 
 cat > /app/_generated.sh <<EOF
 #!/bin/bash
-$@
+exec "${@}"
 EOF
 
 chmod +x /app/_generated.sh
