@@ -1,4 +1,7 @@
 FROM maxird/BASE_IMAGE:BASE_FROM_VERSION
 
-ENTRYPOINT ["scl", "enable", "devtoolset-3"]
+ADD scl.sh /app/
+
+ENTRYPOINT ["/app/scl.sh"]
+
 CMD ["bash"]

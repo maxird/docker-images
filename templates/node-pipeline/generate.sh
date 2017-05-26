@@ -14,6 +14,7 @@ function process
       -e "s|BASE_IMAGE|$image|" \
       -e "s|BASE_FROM_VERSION|$base|" \
       Dockerfile > "$outpath/Dockerfile"
+  cp $SRCDIR/scl.sh $outpath/scl.sh
 }
 
 BASE_IMAGE="node-package"

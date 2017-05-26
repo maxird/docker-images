@@ -1,4 +1,7 @@
 FROM maxird/node-package:7
 
-ENTRYPOINT ["scl", "enable", "devtoolset-3"]
+ADD scl.sh /app/
+
+ENTRYPOINT ["/app/scl.sh"]
+
 CMD ["bash"]
