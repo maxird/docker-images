@@ -34,10 +34,10 @@ RUN export JQ_VERSION=1.5 && \
             which \
             scl-utils \
             haproxy openssl \
-            sudo strace net-tools iproute dnsmasq \
+            sudo strace net-tools iproute dnsmasq nc \
             selinux-policy policycoreutils policycoreutils-python \
             libselinux-python libsemanage-python \
-            python && \
+            python git && \
     yum -y install \
             python-pip \
             openssl-devel \
