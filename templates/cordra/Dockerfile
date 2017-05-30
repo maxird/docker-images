@@ -22,8 +22,12 @@ RUN export VERSION=APP_VERSION && \
     cd /opt/cordra/config && \
     rm -f password.dct config.dct privatekey publickey
 
+ADD dev-init /opt/cordra/dev-init
+ADD startup /opt/cordra/startup
+
 EXPOSE 8080
 
 VOLUME /opt/cordra/data
+VOLUME /opt/cordra/config
 
 ENTRYPOINT /opt/cordra/startup

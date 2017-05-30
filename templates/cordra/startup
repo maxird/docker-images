@@ -1,0 +1,19 @@
+#!/bin/bash
+SRCDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd $SRCDIR
+
+if [ -z "${CORDRA_PREFIX}" ]; then
+  export CORDRA_PREFIX=12.34567.89
+fi
+
+if [ -z "${CORDRA_ADMIN_PASSWORD}" ]; then
+  export CORDRA_ADMIN_PASSWORD=reallychangeme
+fi
+
+if [ ! -f $SRCDIR/config/config.dct ]; then
+  $SRCDIR/dev-init
+fi
+
+## launch
+#
+$SRCDIR/sw/bin/do-server $SRCDIR/data

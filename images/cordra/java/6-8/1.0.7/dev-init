@@ -1,0 +1,44 @@
+#!/bin/bash
+SRCDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd $SRCDIR
+
+## run this bit to get the private/public keys
+#
+cat > $SRCDIR/answers <<EOF
+n
+
+
+
+9900
+0
+8080
+0
+admin
+$CORDRA_PREFIX
+
+
+EOF
+$SRCDIR/sw/bin/do-server -setup $SRCDIR/data < answers
+
+## configure
+#
+cat > $SRCDIR/config/config.dct <<EOF
+{
+  "serviceid" = "${CORDRA_PREFIX}/repo"
+  "port" = "9900"
+  "ssl_port" = "0"
+  "http_port" = "8080"
+  "https_port" = "8443"
+  "redirect_stderr" = "yes"
+  "enable_pull_replication" = "no"
+  "serverid" = "1"
+  "log_save_interval" = "Monthly"
+  "log_accesses" = "yes"
+}
+EOF
+
+cat > $SRCDIR/config/password.dct <<EOF
+{
+  "admin" = "${CORDRA_ADMIN_PASSWORD}"
+}
+EOF
