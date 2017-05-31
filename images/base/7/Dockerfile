@@ -48,8 +48,8 @@ RUN export JQ_VERSION=1.5 && \
     pip install --upgrade pip && \
     pip install --upgrade cryptography pyyaml jinja2 httplib2 six paramiko pycrypto && \
     pip install --upgrade docker-py && \
+    pip install --upgrade pyhcl==0.2.3 && \
     pip install --upgrade python-consul && \
-    pip install --upgrade pyhcl && \
     yum -y erase gcc python-devel cpp glibc-devel glibc-headers kernel-headers && \
     yum -y clean all && \
     rm -rf /var/cache/yum/* && \
