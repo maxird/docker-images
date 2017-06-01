@@ -16,9 +16,10 @@ function process
       -e "s|BASE_FROM_VERSION|$base|" \
       -e "s|APP_VERSION|$version|" \
       Dockerfile > "$outpath/Dockerfile"
+  cp -f bootstrap.sh "$outpath/"
 }
 
-BASE_IMAGE="jordan/rundeck"
+BASE_IMAGE="maxird/java:6-8"
 
 ## rundeck versions
 #
