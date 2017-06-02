@@ -13,32 +13,14 @@ RUN export RUNDECK_VERSION=BASE_FROM_VERSION && \
     pip install ansible==2.3.0.0 && \
     echo 'done'
 
+ADD install.sh /
+
+RUN export RUNDECK_VERSION=BASE_FROM_VERSION && \
+    export PLUGIN_VERSION=APP_VERSION && \
+    /install.sh
+
 ADD bootstrap.sh /
 
-VOLUME /var/rundeck
-
-## rundeck configuration
-#
-VOLUME /etc/rundeck
-
-## rundeck projects
-#
-VOLUME /var/rundeck
-
-## rundeck persistence
-#
-VOLUME /var/lib/rundeck/data
-VOLUME /var/lib/rundeck/logs
-
-## local mysql persistence
-#
-VOLUME /var/lib/mysql
-
-## log storage
-#
-VOLUME /var/log/rundeck
-
-# VOLUME /opt/rundeck-plugins
-
+VOLUME /data
 
 CMD ["/bootstrap.sh"]

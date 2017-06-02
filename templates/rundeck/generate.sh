@@ -16,6 +16,7 @@ function process
       -e "s|BASE_FROM_VERSION|$base|" \
       -e "s|APP_VERSION|$version|" \
       Dockerfile > "$outpath/Dockerfile"
+  cp -f install.sh "$outpath/"
   cp -f bootstrap.sh "$outpath/"
 }
 
