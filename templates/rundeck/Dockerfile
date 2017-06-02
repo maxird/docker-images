@@ -23,4 +23,6 @@ ADD bootstrap.sh /
 
 VOLUME /data
 
+USER rundeck
+
 CMD ["/bootstrap.sh"]

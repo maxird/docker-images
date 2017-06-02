@@ -1,9 +1,6 @@
 #!/bin/bash
 
-echo "$#:[$*]"
+source /etc/rundeck/profile
 
-service rundeckd start
 stty sane
-sleep 5
-tail -f /var/log/rundeck/*.log
-exit 0
+exec $rundeckd
