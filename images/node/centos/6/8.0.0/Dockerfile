@@ -4,6 +4,7 @@ RUN export VERSION=8.0.0 && \
     cd /opt && \
     wget -q https://nodejs.org/dist/v${VERSION}/node-v${VERSION}-linux-x64.tar.xz && \
     tar xf node-v${VERSION}-linux-x64.tar.xz && \
+    chown -R root:root node-v${VERSION}-linux-x64 && \
     rm node-v${VERSION}-linux-x64.tar.xz && \
     ln -s node-v${VERSION}-linux-x64 node && \
     export PATH=/opt/node/bin:$PATH && \
@@ -13,6 +14,7 @@ RUN export VERSION=8.0.0 && \
     alternatives --install /usr/bin/bunyan bunyan /opt/node-v${VERSION}-linux-x64/bin/bunyan 0 && \
     alternatives --install /usr/bin/nsp nsp /opt/node-v${VERSION}-linux-x64/bin/nsp 0 && \
     npm -g upgrade npm --log-level=warn && \
+    npm -g install node-gyp nan && \
     npm -g install nodemon --production --log-level=warn && \
     npm -g install bunyan --production --log-level=warn && \
     npm -g install nsp --production --log-level=warn && \

@@ -18,6 +18,7 @@ echo configuring registry pointers
 
 ## cleanup
 ##
+[ -e package-lock.json ] && rm package-lock.json
 [ -e node_modules ] && rm -rf node_modules
 [ -e "$TARFILE" ] && rm "$TARFILE"
 
@@ -34,6 +35,7 @@ cat package.json
 npm install --production --log-level=warn
 npm_result=$?
 echo "npm return code $npm_result"
+cp -f package-lock.json out/
 
 ## run the nsp check
 ##
