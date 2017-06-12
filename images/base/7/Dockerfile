@@ -51,6 +51,7 @@ RUN export JQ_VERSION=1.5 && \
     pip install --upgrade ply==3.9 && \
     pip install --upgrade pyhcl && \
     pip install --upgrade python-consul && \
+    pip install --upgrade ansible && \
     yum -y erase gcc python-devel cpp glibc-devel glibc-headers kernel-headers && \
     yum -y clean all && \
     rm -rf /var/cache/yum/* && \
