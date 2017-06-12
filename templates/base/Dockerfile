@@ -41,11 +41,11 @@ RUN export JQ_VERSION=1.5 && \
     yum -y install \
             python-pip \
             openssl-devel \
-            python-cffi \
             libffi-devel \
             htop && \
     yum -y install gcc python-devel && \
     pip install --upgrade pip && \
+    pip install --upgrade cffi && \
     pip install --upgrade cryptography pyyaml jinja2 httplib2 six paramiko pycrypto && \
     pip install --upgrade docker-py && \
     pip install --upgrade ply==3.9 && \
