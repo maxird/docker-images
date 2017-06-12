@@ -52,6 +52,8 @@ RUN export JQ_VERSION=1.5 && \
     pip install --upgrade pyhcl && \
     pip install --upgrade python-consul && \
     pip install --upgrade ansible && \
+    mkdir -p /etc/ansible/hosts && \
+    echo 'localhost ansible_connection=local' > /etc/ansible/hosts/inventory && \
     yum -y erase gcc python-devel cpp glibc-devel glibc-headers kernel-headers && \
     yum -y clean all && \
     rm -rf /var/cache/yum/* && \
