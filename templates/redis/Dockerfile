@@ -21,6 +21,9 @@ RUN export VERSION=APP_VERSION && \
     yum -y clean all && \
     rm -rf /var/cache/yum/* && \
     yum -y clean all && \
+    cd /usr/local/bin && \
+    mkdir -p /builds && \
+    tar cJf /builds/redis-${VERSION}.tar.xz redis* && \
     echo "done"
 
 VOLUME ["/opt/redis/data"]
