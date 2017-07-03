@@ -2,9 +2,9 @@ FROM centos:6
 MAINTAINER maxird
 
 RUN export JQ_VERSION=1.5 && \
-    export CONSUL_VERSION=0.8.4 && \
+    export CONSUL_VERSION=0.8.5 && \
     export CONSUL_REPLICATE_VERSION=0.3.1 && \
-    export CONSUL_TEMPLATE_VERSION=0.18.5 && \
+    export CONSUL_TEMPLATE_VERSION=0.19.0 && \
     export ENVCONSUL_VERSION=0.6.2 && \
     export VAULT_VERSION=0.7.3 && \
     export VAULT_SSH_HELPER_VERSION=0.1.3 && \
