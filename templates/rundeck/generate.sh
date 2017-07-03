@@ -25,7 +25,7 @@ BASE_IMAGE="maxird/java:6-8"
 ## rundeck versions
 #
 BASES="
-  2.8.2
+  2.8.3
 "
 
 ## rundeck-ansible-plugin versions

@@ -1,7 +1,7 @@
-FROM BASE_IMAGE
+FROM maxird/java:6-8
 
-RUN export RUNDECK_VERSION=BASE_FROM_VERSION && \
-    export PLUGIN_VERSION=APP_VERSION && \
+RUN export RUNDECK_VERSION=2.8.3 && \
+    export PLUGIN_VERSION=2.0.2 && \
     rpm -Uvh http://repo.rundeck.org/latest.rpm && \
     yum install -y rundeck rundeck-cli rundeck-config && \
     mkdir -p /var/lib/rundeck/libext && \
@@ -15,8 +15,8 @@ RUN export RUNDECK_VERSION=BASE_FROM_VERSION && \
 
 ADD install.sh /
 
-RUN export RUNDECK_VERSION=BASE_FROM_VERSION && \
-    export PLUGIN_VERSION=APP_VERSION && \
+RUN export RUNDECK_VERSION=2.8.3 && \
+    export PLUGIN_VERSION=2.0.2 && \
     /install.sh
 
 ADD bootstrap.sh /
