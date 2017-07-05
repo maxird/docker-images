@@ -5,6 +5,11 @@
 out=package.nsp.json
 cp package.json $out
 
+if [ ! -d node_modules ]; then
+  echo 'WARNING: no node_modules folder present'
+  exit 0
+fi
+
 echo "scanning node_modules folder for packages"
 cd node_modules
 for module in $(/bin/ls -1 -d *); do
