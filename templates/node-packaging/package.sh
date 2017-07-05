@@ -45,6 +45,10 @@ echo "nsp return code $nsp_result"
 
 echo creating tarfile $TARFILE
 sleep 3s
+if [ ! -d node_modules ]; then
+  mkdir node_modules
+  echo 'placeholder for no dependencies' > node_modules/README.txt
+fi
 tar cJf $TARFILE node_modules/ --mtime='2016-01-02T10:30:00' --owner 0 --group 0 --no-xattrs
 
 rm -rf node_modules
