@@ -33,6 +33,7 @@ RUN cd /opt && \
       npm -g install nodemon --production --log-level=warn && \
       npm -g install bunyan --production --log-level=warn && \
       npm -g install nsp --production --log-level=warn && \
+      chown -R root:root node-v${VERSION}-linux-x64 && \
       rm -f node && \
       export BASENAME="node-v${VERSION}-linux-x64" && \
       export PLATFORM=`cat /etc/system-release | awk '{ if(match($3, /\d*\.\d*/)) print $3; else print $4 }' | cut -c1` && \
@@ -40,4 +41,5 @@ RUN cd /opt && \
       tar cJf "/tmp/$BASENAME+deps.el${PLATFORM}.tar.xz" "$BASENAME/" --mtime='2016-01-02T10:30:00' --owner 0 --group 0 --no-xattrs ; \
     done && \
     rm -rf /tmp/npm-* && \
+    rm -rf ~/.npm && \
     echo "done"
