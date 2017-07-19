@@ -8,6 +8,7 @@ RUN cd /tmp && \
     cd /opt && \
     unzip /tmp/gradle-GRADLE_VERSION-bin.zip && \
     ln -s gradle-GRADLE_VERSION gradle && \
+    rm -f /tmp/gradle-GRADLE_VERSION-bin.zip && \
     echo 'done'
 
 RUN cd /tmp && \
@@ -16,4 +17,5 @@ RUN cd /tmp && \
     cd /opt && \
     tar xf /tmp/apache-maven-MAVEN_VERSION-bin.tar.gz && \
     ln -s apache-maven-MAVEN_VERSION maven && \
+    rm -f /tmp/apache-maven-MAVEN_VERSION-bin.tar.gz && \
     echo 'done'
