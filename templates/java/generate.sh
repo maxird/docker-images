@@ -27,6 +27,7 @@ BASES="6 7"
 VERSIONS=" \
   8u121b13:e9e7ea248e2c4826b92b3f075a80e441 \
   8u131b11:d54c1d3a095b4ff2b6607d096fa80163 \
+  8u141b15:336fa29ff2bb4ef291e347e091f7f4a7 \
 "
 
 for b in $BASES; do
