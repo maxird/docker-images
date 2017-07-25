@@ -26,6 +26,7 @@ VERSIONS=" \
   3.0.7 \
   3.2.9 \
   4.0.0 \
+  4.0.1 \
 "
 
 for b in $BASES; do
