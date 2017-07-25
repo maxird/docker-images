@@ -52,6 +52,7 @@ RUN export JQ_VERSION=1.5 && \
     pip install --upgrade pyhcl && \
     pip install --upgrade python-consul && \
     pip install --upgrade ansible && \
+    pip install --upgrade ansible-lint && \
     mkdir -p /etc/ansible/hosts && \
     echo 'localhost ansible_connection=local' > /etc/ansible/hosts/inventory && \
     yum -y erase gcc python-devel cpp glibc-devel glibc-headers kernel-headers && \
