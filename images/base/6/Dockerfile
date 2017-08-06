@@ -8,6 +8,7 @@ RUN export JQ_VERSION=1.5 && \
     export ENVCONSUL_VERSION=0.6.2 && \
     export VAULT_VERSION=0.7.3 && \
     export VAULT_SSH_HELPER_VERSION=0.1.3 && \
+    echo -e "\nclean_requirements_on_remove=1" >> /etc/yum.conf && \
     yum -y update && \
     yum -y install epel-release && \
     yum -y install centos-release-scl-rh && \
@@ -71,6 +72,8 @@ RUN export JQ_VERSION=1.5 && \
     wget -q -O - https://releases.hashicorp.com/vault-ssh-helper/${VAULT_SSH_HELPER_VERSION}/vault-ssh-helper_${VAULT_SSH_HELPER_VERSION}_linux_amd64.zip | python -c "import zipfile,sys,StringIO;zipfile.ZipFile(StringIO.StringIO(sys.stdin.read())).extractall('.')" && \
     chmod +x consul* envconsul vault* && \
     mkdir -p /etc/consul.d && \
+    yum -y upgrade && \
+    package-cleanup --oldkernels --count=1 -y && \
     yum -y clean all && \
     rm -rf /var/cache/yum/* && \
     yum -y clean all
