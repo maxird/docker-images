@@ -22,4 +22,4 @@ VOLUME /opt/keycloak/standalone/log
 VOLUME /opt/keycloak/standalone/tmp
 
 
-ENTRYPOINT ["/opt/keycloak/bin/standalone.sh", "-Djboss.bind.address=0.0.0.0"]
+CMD ["/opt/keycloak/bin/standalone.sh", "-Djboss.bind.address=0.0.0.0"]

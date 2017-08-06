@@ -30,4 +30,4 @@ EXPOSE 8080
 VOLUME /opt/cordra/data
 VOLUME /opt/cordra/config
 
-ENTRYPOINT /opt/cordra/startup
+CMD ["/opt/cordra/startup"]

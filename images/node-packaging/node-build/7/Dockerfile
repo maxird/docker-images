@@ -10,4 +10,4 @@ RUN mkdir -p /out && \
     ln -sf /out /app/out
 VOLUME ["/out"]
 
-ENTRYPOINT ["/app/bootstrap.sh"]
+CMD ["/app/bootstrap.sh"]

@@ -10,4 +10,4 @@ RUN export VERSION=8.5.11 && \
     ln -s apache-tomcat-${VERSION} tomcat && \
     rm -rf /opt/tomcat/webapps/*
 
-ENTRYPOINT ["/opt/tomcat/bin/catalina.sh", "run"]
+CMD ["/opt/tomcat/bin/catalina.sh", "run"]

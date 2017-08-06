@@ -29,5 +29,4 @@ RUN export VERSION=4.0.1 && \
 VOLUME ["/opt/redis/data"]
 EXPOSE 6379
 
-ENTRYPOINT ["/usr/local/bin/redis-server"]
-CMD ["/opt/redis/conf/redis.conf"]
+CMD ["/usr/local/bin/redis-server", "/opt/redis/conf/redis.conf"]

@@ -10,4 +10,4 @@ RUN export VERSION=5.15.0 && \
 
 EXPOSE 1883 5672 8161 61613 61614 61616
 
-ENTRYPOINT ["/opt/activemq/bin/activemq", "console"]
+CMD ["/opt/activemq/bin/activemq", "console"]
