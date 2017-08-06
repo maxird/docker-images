@@ -33,6 +33,7 @@ RUN export JQ_VERSION=1.5 && \
       fi; \
     ) && \
     yum -y install \
+            yum-utils \
             curl wget telnet openssh-server openssh-clients bind-utils nc lsof \
             tar xz bzip bzip2 zip unzip \
             which \
