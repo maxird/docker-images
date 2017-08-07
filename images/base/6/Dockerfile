@@ -12,6 +12,7 @@ RUN export JQ_VERSION=1.5 && \
     export VAULT_VERSION=0.7.3 && \
     export VAULT_SSH_HELPER_VERSION=0.1.3 && \
     export TINI_VERSION=0.15.0 && \
+    date --iso-8601 > /etc/image-date && \
     echo -e "\nclean_requirements_on_remove=1" >> /etc/yum.conf && \
     yum -y update && \
     yum -y install epel-release && \
