@@ -2,7 +2,7 @@ FROM centos:6
 MAINTAINER maxird
 
 ENTRYPOINT ["/bin/tini", "-g", "--"]
-CMD ["/usr/bin/bash"]
+CMD ["bash"]
 
 RUN export JQ_VERSION=1.5 && \
     export CONSUL_VERSION=0.9.0 && \
