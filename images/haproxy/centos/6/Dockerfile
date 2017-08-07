@@ -1,3 +1,0 @@
-FROM centos:6
-
-EXPOSE 80 443 1936
