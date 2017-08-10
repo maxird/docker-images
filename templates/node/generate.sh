@@ -30,6 +30,7 @@ VERSIONS=" \
   6.11.2 \
   8.1.4 \
   8.2.1 \
+  8.3.0 \
 "
 
 for b in $BASES; do
