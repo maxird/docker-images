@@ -4,5 +4,4 @@ SRCDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 $SRCDIR/reload
 
 dnsmasq
-# echo "$!" > /var/run/dnsmasq.pid
 tail -f /var/log/dnsmasq.log

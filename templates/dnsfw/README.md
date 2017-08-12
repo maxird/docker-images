@@ -26,3 +26,14 @@ docker run -d \
 #
 docker exec dns reload
 ```
+
+## Extract Log Entries
+
+```shellscript
+cat dnsmasq.log | \
+    sed '/ec2.internal/d' | \
+    grep 'NXDOMAIN' | \
+    awk '{ print $6; }' | \
+    sort -f | \
+    uniq
+```

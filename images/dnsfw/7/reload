@@ -28,11 +28,17 @@ bind-dynamic
 user=root
 pid-file=/var/run/dnsmasq.pid
 log-async
-log-facility=/var/log/dnsmasq.log
+log-facility=/config/dnsmasq.log
 log-queries
 server=/#/
 server=//${server}
 "
+
+if [ -f /config/custom.conf ]; then
+  header="$header
+$(cat /config/custom.conf)
+"
+fi
 
 ## get name server
 #
@@ -86,5 +92,4 @@ if [ -f /var/run/dnsmasq.pid ]; then
   kill -9 $pid
   rm -f /var/run/dnsmasq.pid
   dnsmasq
-  # echo "$!" > /var/run/dnsmasq.pid
 fi
