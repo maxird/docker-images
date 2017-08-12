@@ -1,0 +1,90 @@
+#!/bin/bash
+SRCDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+## initialize any files we may need
+#
+if [ ! -d /config ]; then
+  echo 'creating configuration folder'
+  mkdir -p /config
+fi
+
+if [ ! -f /config/local.conf ]; then
+  echo 'creating stub local file'
+  touch /config/local.conf
+fi
+
+if [ ! -f /config/domains.conf ]; then
+  echo 'creating sub domains file'
+  touch /config/domains.conf
+fi
+
+## base configuration
+#
+header="## generated configuration file
+#
+port=53
+cache-size=1500
+bind-dynamic
+user=root
+pid-file=/var/run/dnsmasq.pid
+log-async
+log-facility=/var/log/dnsmasq.log
+log-queries
+server=/#/
+server=//${server}
+"
+
+## get name server
+#
+server=$(cat /etc/resolv.conf | grep '^nameserver' | head -n 1 | awk '{ print $2; }')
+
+function read_file
+{
+  name=$1
+  cat $name | sed -e '/^[#|;]/d' -e '/^$/d' | sort -f | uniq
+}
+
+## add the local domain resolution
+#
+local_domains=$(read_file /config/local.conf)
+for local in $local_domains; do
+  header="$header
+server=/${local}/${server}
+"
+done
+
+## write out the list
+#
+echo "$header" > /tmp/dnsmasq.conf
+
+## write out the whitelisted domains
+#
+domains=$(read_file /config/domains.conf)
+for domain in $domains; do
+  if [ -n "${domain}" ]; then
+    echo "server=/${domain}/${server}" >> /tmp/dnsmasq.conf
+  fi
+done
+
+## if content has not changed do not reload
+#
+diff /tmp/dnsmasq.conf /etc/dnsmasq.conf &> /dev/null
+if [ $? -eq 0 ]; then
+  echo 'no changes, not reloading'
+  exit 0
+fi
+
+## activate the completed file
+#
+mv -f /tmp/dnsmasq.conf /etc/dnsmasq.conf
+
+## send a signal to reload
+#
+if [ -f /var/run/dnsmasq.pid ]; then
+  pid=$(cat /var/run/dnsmasq.pid)
+  echo "reloading configuration"
+  kill -9 $pid
+  rm -f /var/run/dnsmasq.pid
+  dnsmasq
+  # echo "$!" > /var/run/dnsmasq.pid
+fi
