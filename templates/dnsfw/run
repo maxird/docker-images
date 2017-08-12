@@ -3,5 +3,6 @@ SRCDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 $SRCDIR/reload
 
+touch /config/dnsmasq.log
 dnsmasq
-tail -f /var/log/dnsmasq.log
+tail -f /config/dnsmasq.log
