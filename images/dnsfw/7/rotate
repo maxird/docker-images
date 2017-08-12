@@ -1,0 +1,6 @@
+#!/bin/bash
+SRCDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+echo 'reopen log file'
+pid=$(cat /var/run/dnsmasq.pid)
+kill -s USR2 $pid

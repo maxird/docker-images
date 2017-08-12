@@ -8,8 +8,9 @@ VOLUME /config
 
 ADD run /app/
 ADD reload /app/
+ADD rotate /app/
 RUN mkdir -p /config && \
-    chmod +x /app/run /app/reload
+    chmod +x /app/run /app/reload /app/rotate
 
 ENV PATH $PATH:/app
 WORKDIR /app

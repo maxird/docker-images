@@ -17,6 +17,7 @@ function process
       Dockerfile > "$outpath/Dockerfile"
   cp -f reload "$outpath/"
   cp -f run "$outpath/"
+  cp -f rotate "$outpath/"
 }
 
 BASE_IMAGE="maxird/centos"
