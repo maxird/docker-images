@@ -25,6 +25,7 @@ header="## generated configuration file
 port=53
 cache-size=1500
 bind-dynamic
+no-poll
 user=root
 pid-file=/var/run/dnsmasq.pid
 log-async
