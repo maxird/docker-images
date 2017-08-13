@@ -18,6 +18,11 @@ if [ ! -f /config/domains.conf ]; then
   touch /config/domains.conf
 fi
 
+if [ ! -f /config/resolv.conf ]; then
+  echo 'copying default resolv.conf file'
+  cat /etc/resolv.conf | grep nameserver > /config/resolv.conf
+fi
+
 ## base configuration
 #
 header="## generated configuration file
@@ -26,6 +31,7 @@ port=53
 cache-size=1500
 bind-dynamic
 no-poll
+resolv-file=/config/resolv.conf
 user=root
 pid-file=/var/run/dnsmasq.pid
 log-async
