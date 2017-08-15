@@ -13,18 +13,20 @@ queries resulting in a NXDOMAIN error.
 ## launch container
 #
 docker run -d \
-    --restart always \
     --name dns \
-    --volume $PWD/config:/config:ro \
+    --volume $PWD/config:/config \
     --publish 53:53/tcp \
     --publish 53:53/udp \
-    --net bob \
-    junk
     maxird/dnsfw:latest
 
 ## reload configuration from /config
 #
 docker exec dns reload
+
+## rotate log file (assumes external log rotation)
+#
+docker exec dns rotate
+
 ```
 
 ## Extract Log Entries
