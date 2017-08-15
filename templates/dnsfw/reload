@@ -10,12 +10,12 @@ fi
 
 if [ ! -f /config/local.conf ]; then
   echo 'creating stub local file'
-  touch /config/local.conf
+  cp /defaults/local.conf /config/
 fi
 
 if [ ! -f /config/domains.conf ]; then
   echo 'creating sub domains file'
-  touch /config/domains.conf
+  cp /defaults/domains.conf /config/
 fi
 
 if [ ! -f /config/resolv.conf ]; then

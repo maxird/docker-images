@@ -9,8 +9,10 @@ VOLUME /config
 ADD run /app/
 ADD reload /app/
 ADD rotate /app/
+ADD domains.conf /defaults/
+ADD local.conf /defaults/
 RUN mkdir -p /config && \
-    chmod +x /app/run /app/reload /app/rotate
+    chmod +x /app/*
 
 ENV PATH $PATH:/app
 WORKDIR /app

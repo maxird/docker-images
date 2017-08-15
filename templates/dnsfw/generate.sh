@@ -18,6 +18,8 @@ function process
   cp -f reload "$outpath/"
   cp -f run "$outpath/"
   cp -f rotate "$outpath/"
+  cp -f config/domains.conf "$outpath/"
+  cp -f config/local.conf "$outpath/"
 }
 
 BASE_IMAGE="maxird/centos"
