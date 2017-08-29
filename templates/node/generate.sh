@@ -22,15 +22,9 @@ BASE_IMAGE="centos"
 
 BASES="6 7"
 
-VERSIONS=" \
-  4.8.4 \
-  6.9.5 \
-  6.10.3 \
-  6.11.1 \
-  6.11.2 \
-  8.1.4 \
-  8.2.1 \
-  8.3.0 \
+VERSIONS="
+  6.11.2
+  8.4.0
 "
 
 for b in $BASES; do
