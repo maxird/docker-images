@@ -5,13 +5,13 @@ ENTRYPOINT ["/bin/tini", "-g", "--"]
 CMD ["bash"]
 
 RUN export JQ_VERSION=1.5 && \
-    export CONSUL_VERSION=0.9.2 && \
+    export CONSUL_VERSION=0.9.3 && \
     export CONSUL_REPLICATE_VERSION=0.4.0 && \
-    export CONSUL_TEMPLATE_VERSION=0.19.1 && \
+    export CONSUL_TEMPLATE_VERSION=0.19.2 && \
     export ENVCONSUL_VERSION=0.7.2 && \
-    export VAULT_VERSION=0.8.1 && \
+    export VAULT_VERSION=0.8.2 && \
     export VAULT_SSH_HELPER_VERSION=0.1.3 && \
-    export TINI_VERSION=0.15.0 && \
+    export TINI_VERSION=0.16.1 && \
     date --iso-8601 > /etc/image-date && \
     echo -e "\nclean_requirements_on_remove=1" >> /etc/yum.conf && \
     yum -y update && \
