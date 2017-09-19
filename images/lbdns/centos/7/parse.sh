@@ -50,7 +50,7 @@ for line in $list; do
     CONTENT="${CONTENT}
 frontend ${name}
   bind *:${port}
-  http-request    set-header X-Forwarded-Port %[dst_port]
+  # http-request    set-header X-Forwarded-Port %[dst_port]
   default_backend backend-${name}
 
 backend backend-${name}"
