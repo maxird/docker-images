@@ -66,6 +66,7 @@ RUN export JQ_VERSION=1.5 && \
     mkdir -p /build && \
     cd /build && \
     wget http://www.haproxy.org/download/1.7/src/haproxy-${HAPROXY_VERSION}.tar.gz && \
+    tar xf haproxy-${HAPROXY_VERSION}.tar.gz && \
     cd haproxy-${HAPROXY_VERSION} && \
     make TARGET=linux2628 && \
     make install && \
