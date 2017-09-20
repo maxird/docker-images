@@ -12,6 +12,7 @@ RUN export JQ_VERSION=1.5 && \
     export VAULT_VERSION=0.8.3 && \
     export VAULT_SSH_HELPER_VERSION=0.1.3 && \
     export TINI_VERSION=0.16.1 && \
+    export HAPROXY_VERSION=1.7.9 && \
     date --iso-8601 > /etc/image-date && \
     echo -e "\nclean_requirements_on_remove=1" >> /etc/yum.conf && \
     yum -y update && \
@@ -50,7 +51,7 @@ RUN export JQ_VERSION=1.5 && \
             openssl-devel \
             libffi-devel \
             htop && \
-    yum -y install gcc python-devel && \
+    yum -y install gcc python-devel pcre-static pcre-devel && \
     pip install --upgrade pip && \
     pip install --upgrade cffi && \
     pip install --upgrade cryptography pyyaml jinja2 httplib2 six paramiko pycrypto && \
@@ -62,7 +63,14 @@ RUN export JQ_VERSION=1.5 && \
     pip install --upgrade ansible-lint && \
     mkdir -p /etc/ansible/hosts && \
     echo 'localhost ansible_connection=local' > /etc/ansible/hosts/inventory && \
-    yum -y erase gcc python-devel cpp glibc-devel glibc-headers kernel-headers && \
+    mkdir -p /build && \
+    cd /build && \
+    wget http://www.haproxy.org/download/1.7/src/haproxy-${HAPROXY_VERSION}.tar.gz && \
+    cd haproxy-${HAPROXY_VERSION} && \
+    make TARGET=linux2628 && \
+    make install && \
+    ln -sf /usr/local/sbin/haproxy /usr/sbin/haproxy && \
+    yum -y erase gcc python-devel pcre-devel cpp glibc-devel glibc-headers kernel-headers && \
     yum -y clean all && \
     rm -rf /var/cache/yum/* && \
     rm -rf /root/.cache && \
