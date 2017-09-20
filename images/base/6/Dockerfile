@@ -71,6 +71,8 @@ RUN export JQ_VERSION=1.5 && \
     make TARGET=linux2628 && \
     make install && \
     ln -sf /usr/local/sbin/haproxy /usr/sbin/haproxy && \
+    cd / && \
+    rm -rf /build && \
     yum -y erase gcc python-devel pcre-devel cpp glibc-devel glibc-headers kernel-headers && \
     yum -y clean all && \
     rm -rf /var/cache/yum/* && \
