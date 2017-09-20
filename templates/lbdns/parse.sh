@@ -22,19 +22,31 @@ fi
 
 CONTENT=""
 
+## domain,name,port[,health-uri[,target_port]]
+#
 for line in $list; do
-  port=$(echo "${line}" | awk -F ',' '{print $1}')
-  name=$(echo "${line}" | awk -F ',' '{print $2}')
-  domain=$(echo "${line}" | awk -F ',' '{print $3}')
-  target_port=$(echo "${line}" | awk -F ',' '{print $4}')
-  if [ -n "${target_port}" ]; then
-    temp=${target_port}
-    target_port=${name}
-    name=${domain}
-    domain=${temp}
+  one=$(echo "${line}" | awk -F ',' '{print $1}')
+  two=$(echo "${line}" | awk -F ',' '{print $2}')
+  three=$(echo "${line}" | awk -F ',' '{print $3}')
+  four=$(echo "${line}" | awk -F ',' '{print $4}')
+  five=$(echo "${line}" | awk -F ',' '{print $5}')
+
+  domain=${one}
+  name=${two}
+  port=${three}
+
+  if [ -n "${five}" ]; then
+    health_uri=${four}
+    target_port=${five}
+  elif [ -n "${four}" ]; then
+    health_uri=${four}
+    target_port=${port}
   else
+    health_uri="/"
     target_port=${port}
   fi
+
+  echo "${name}.${domain}:${target_port}${health_uri} via ${port}"
   echo "looking for servers for ${name}.${domain}..."
   addresses=$(
     nslookup ${name}.${domain} |
@@ -49,16 +61,19 @@ for line in $list; do
   else
     CONTENT="${CONTENT}
 frontend ${name}
-  bind *:${port}
-  http-request    set-header X-Forwarded-Port %[dst_port]
-  default_backend backend-${name}
+    bind *:${port}
+    http-request    set-header X-Forwarded-Port %[dst_port]
+    default_backend backend-${name}
 
-backend backend-${name}"
+backend backend-${name}
+    balance static-rr
+    option httpchk GET ${health_uri}
+    http-request set-header X-Forwarded-Port %[dst_port]"
 
     for address in ${addresses}; do
       echo "    adding ${address}:${target_port}..."
       CONTENT="${CONTENT}
-  server ${name}-${address}-${port} ${address}:${target_port} check"
+    server ${name}-${address}-${port} ${address}:${target_port} check"
     done
 
     CONTENT="${CONTENT}
