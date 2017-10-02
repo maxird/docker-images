@@ -15,7 +15,8 @@ RUN export JQ_VERSION=1.5 && \
     export HAPROXY_VERSION=1.7.9 && \
     date --iso-8601 > /etc/image-date && \
     echo -e "\nclean_requirements_on_remove=1" >> /etc/yum.conf && \
-    yum -y update && \
+    sed -i 's/.*installonly_limit=.*/installonly_limit=1/g' /etc/yum.conf && \
+    yum -y upgrade && \
     yum -y install epel-release && \
     yum -y install centos-release-scl-rh && \
     ( \
