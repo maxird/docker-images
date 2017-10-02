@@ -57,7 +57,7 @@ RUN export JQ_VERSION=1.5 && \
     pip install --upgrade cffi && \
     pip install --upgrade cryptography pyyaml jinja2 httplib2 six paramiko pycrypto && \
     pip install --upgrade docker-py && \
-    pip install --upgrade ply==3.9 && \
+    pip install --upgrade ply && \
     pip install --upgrade pyhcl && \
     pip install --upgrade python-consul && \
     pip install --upgrade ansible && \
