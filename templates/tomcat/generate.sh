@@ -24,7 +24,7 @@ BASES="6-8 7-8"
 
 VERSIONS="
   8.0.46
-  8.5.20
+  8.5.23
 "
 
 for b in $BASES; do
