@@ -1,5 +1,7 @@
 FROM maxird/BASE_IMAGE:BASE_FROM_VERSION
 
+ENV JAVA_HOME=/usr/java/APP_FOLDER/jre
+
 RUN export FULL_VERSION=APP_VERSION && \
     export JDK_UUID=APP_JDK_UUID && \
     export VERSION=`echo $FULL_VERSION | sed -e 's|b.*||'` && \

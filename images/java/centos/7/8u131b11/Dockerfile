@@ -1,5 +1,7 @@
 FROM maxird/centos:7
 
+ENV JAVA_HOME=/usr/java/jdk1.8.0_131/jre
+
 RUN export FULL_VERSION=8u131b11 && \
     export JDK_UUID=d54c1d3a095b4ff2b6607d096fa80163 && \
     export VERSION=`echo $FULL_VERSION | sed -e 's|b.*||'` && \
