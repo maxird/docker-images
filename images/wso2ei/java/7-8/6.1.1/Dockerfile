@@ -3,7 +3,6 @@ FROM maxird/java:7-8
 ENV WSO2_VERSION=6.1.1
 ENV WSO2_FOLDER=enterprise-integrator
 ENV WSO2_CODE=ei
-ENV WSO2_LAUNCH=integrator.sh
 
 RUN cd /tmp && \
     wget \
@@ -18,4 +17,4 @@ RUN cd /tmp && \
 
 EXPOSE 9443 9763 8243 8280
 WORKDIR /opt/wso2${WSO2_CODE}-${WSO2_VERSION}/bin
-CMD ["./${WSO2_LAUNCH}"]
+CMD ["./integrator.sh"]

@@ -3,7 +3,6 @@ FROM maxird/java:7-8
 ENV WSO2_VERSION=5.3.0
 ENV WSO2_FOLDER=identity-server
 ENV WSO2_CODE=is
-ENV WSO2_LAUNCH=wso2server.sh
 
 RUN cd /tmp && \
     wget \
@@ -18,4 +17,4 @@ RUN cd /tmp && \
 
 EXPOSE 9443 9763 8000 10500
 WORKDIR /opt/wso2${WSO2_CODE}-${WSO2_VERSION}/bin
-CMD ["./${WSO2_LAUNCH}"]
+CMD ["./wso2server.sh"]

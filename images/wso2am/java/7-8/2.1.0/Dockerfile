@@ -3,7 +3,6 @@ FROM maxird/java:7-8
 ENV WSO2_VERSION=2.1.0
 ENV WSO2_FOLDER=api-manager
 ENV WSO2_CODE=am
-ENV WSO2_LAUNCH=wso2server.sh
 
 RUN cd /tmp && \
     wget \
@@ -18,4 +17,4 @@ RUN cd /tmp && \
 
 EXPOSE 9443 9736 8243 8280 10397 7711
 WORKDIR /opt/wso2${WSO2_CODE}-${WSO2_VERSION}/bin
-CMD ["./${WSO2_LAUNCH}"]
+CMD ["./wso2server.sh"]
