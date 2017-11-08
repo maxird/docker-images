@@ -33,6 +33,7 @@ RUN cd /opt && \
       npm -g install nodemon --production --log-level=warn && \
       npm -g install bunyan --production --log-level=warn && \
       npm -g install nsp --production --log-level=warn && \
+      npm -g install auditjs --production --log-level=warn && \
       chown -R root:root node-v${VERSION}-linux-x64 && \
       rm -f node && \
       export BASENAME="node-v${VERSION}-linux-x64" && \

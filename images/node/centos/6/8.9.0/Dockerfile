@@ -13,6 +13,7 @@ RUN export VERSION=8.9.0 && \
     npm -g install nodemon --production --log-level=warn && \
     npm -g install bunyan --production --log-level=warn && \
     npm -g install nsp --production --log-level=warn && \
+    npm -g install auditjs --production --log-level=warn && \
     chown -R root:root node && \
     rm -rf ~/.npm && \
     alternatives --install /usr/bin/node node /opt/node/bin/node 0 && \
