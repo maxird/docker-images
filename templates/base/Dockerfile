@@ -1,5 +1,5 @@
 FROM centos:BASE_FROM_VERSION
-MAINTAINER maxird
+LABEL maintainer=maxird
 
 ENTRYPOINT ["/bin/tini", "-g", "--"]
 CMD ["bash"]
