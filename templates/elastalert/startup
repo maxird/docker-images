@@ -1,0 +1,32 @@
+#!/bin/bash
+
+## seed configuration if necessary
+#
+if [ ! -f /opt/elastalert/config/config.yml ]; then
+  sed \
+      -e "s|.*rules_folder:.*|rules_folder: /opt/elastalert/rules|" \
+      -e "s|.*es_host:.*|es_host: ${ES_HOST:-elasticsearch}|" \
+      -e "s|.*es_port:.*|es_port: ${ES_PORT:-9200}|" \
+      /opt/elastalert/sample/config.yml > /opt/elastalert/config/config.yml
+fi
+
+## wait for elasticsearch
+#
+url="http://${ES_HOST:-elasticsearch}:${ES_PORT:-9200}"
+while ! wget -q -T 3 -O - "${url}" 2>/dev/null; do
+    echo 'waiting for elasticsearch...'
+    sleep 1
+done
+
+## create index if necessary
+#
+echo 'checking for elastalert index...'
+elastalert-create-index \
+    --config /opt/elastalert/config/config.yml \
+    --index elastalert_status \
+    --old-index ''
+
+## launch elastalert
+#
+echo 'launching elastalert...'
+elastalert --verbose --config /opt/elastalert/config/config.yml $*
