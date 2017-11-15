@@ -10,7 +10,7 @@ RUN export JQ_VERSION=1.5 && \
     export CONSUL_TEMPLATE_VERSION=0.19.4 && \
     export ENVCONSUL_VERSION=0.7.2 && \
     export VAULT_VERSION=0.9.0 && \
-    export VAULT_SSH_HELPER_VERSION=0.1.3 && \
+    export VAULT_SSH_HELPER_VERSION=0.1.4 && \
     export TINI_VERSION=0.16.1 && \
     export HAPROXY_VERSION=1.7.9 && \
     date --iso-8601 > /etc/image-date && \
