@@ -2,22 +2,31 @@ FROM maxird/BASE_IMAGE:BASE_FROM_VERSION
 
 ENV JAVA_HOME=/usr/java/APP_FOLDER/jre
 
-RUN export FULL_VERSION=APP_VERSION && \
-    export JDK_UUID=APP_JDK_UUID && \
-    export VERSION=`echo $FULL_VERSION | sed -e 's|b.*||'` && \
-    export BUILD=`echo $FULL_VERSION | sed -e 's|.*b||'` && \
-    cd /tmp && \
+RUN cd /tmp && \
     export COOKIE="Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" && \
-    export URL="http://download.oracle.com/otn-pub/java/jdk/${VERSION}-b${BUILD}/${JDK_UUID}/jdk-${VERSION}-linux-x64.rpm" && \
-    wget -q -t 5 --retry-connrefused --no-cookies --no-check-certificate --header "$COOKIE" "$URL" && \
-    export URL="http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip" && \
-    wget -q -t 5 --retry-connrefused --no-cookies --no-check-certificate --header "$COOKIE" "$URL" && \
-    rpm -i "jdk-${VERSION}-linux-x64.rpm" && \
-    export JREBIN=`dirname $(readlink -f $(which java))` && \
+    wget -q -t 5 --retry-connrefused --no-cookies --no-check-certificate --header "$COOKIE" "APP_URL" && \
+    export URL="" && \
+    if [ "APP_JCE" == "1" ]; then \
+        wget -q -t 5 \
+            --retry-connrefused \
+            --no-cookies \
+            --no-check-certificate \
+            --header "$COOKIE" \
+            "http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip"; \
+    fi && \
+    rpm -i "APP_FILENAME" ; \
+    export JREBIN=$(dirname $(readlink -f $(which java))) && \
     echo "JREBIN=$JREBIN" && \
-    cd "$JREBIN/../lib/security" && \
-    unzip -j -o /tmp/jce_policy-8.zip && \
-    sed -i 's|securerandom.source=file:/dev/random|securerandom.source=file:/dev/urandom|g' "$JREBIN/../lib/security/java.security" && \
-    echo 'java.net.preferIPv4Stack=true' >> "$JREBIN/../lib/net.properties" && \
+    if [ "APP_JCE" == "1" ]; then \
+        cd "$JREBIN/../lib/security" ; \
+        unzip -j -o /tmp/jce_policy-8.zip ; \
+    fi; \
+    if [ "APP_JCE" == "1" ]; then \
+        sed -i 's|securerandom.source=file:/dev/random|securerandom.source=file:/dev/urandom|g' "$JREBIN/../lib/security/java.security" && \
+        echo 'java.net.preferIPv4Stack=true' >> "$JREBIN/../lib/net.properties" ; \
+    else \
+        sed -i 's|securerandom.source=file:/dev/random|securerandom.source=file:/dev/urandom|g' "$JREBIN/../conf/security/java.security" && \
+        echo 'java.net.preferIPv4Stack=true' >> "$JREBIN/../conf/net.properties" ; \
+    fi; \
     cd /tmp && \
     rm -f *.rpm *.zip

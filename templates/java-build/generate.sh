@@ -21,8 +21,13 @@ function process
 }
 
 BASE_IMAGE="maxird/java"
-BASES="7-8"
+BASES="
+  7-8
+  7-9
+"
 MAVEN_VERSION="3.5.2"
-GRADLE_VERSION="4.3.1"
+GRADLE_VERSION="4.4"
 
-process $BASE_IMAGE $BASES $MAVEN_VERSION $GRADLE_VERSION
+for b in $BASES; do
+  process $BASE_IMAGE $b $MAVEN_VERSION $GRADLE_VERSION
+done

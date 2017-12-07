@@ -1,4 +1,4 @@
-FROM maxird/java:7-8
+FROM maxird/java:7-9
 
 ENV PATH=$PATH:/opt/gradle/bin:/opt/maven/bin
 
