@@ -5,6 +5,15 @@
 out=package.nsp.json
 cp package.json $out
 
+## extract nsp exceptions out of the package.json file
+#
+exceptions=$(cat package.json | jq '.ird.nsp')
+if [ "${exceptions}" != "null" ]; then
+  echo "${exceptions}" > .nsprc
+  echo '------------ WARNING: NSP EXCEPTIONS ------------'
+  cat .nsprc
+fi
+
 if [ ! -d node_modules ]; then
   echo 'WARNING: no node_modules folder present'
   exit 0
