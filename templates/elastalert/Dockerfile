@@ -1,10 +1,13 @@
 FROM maxird/BASE_IMAGE:BASE_FROM_VERSION
 
 RUN yum install -y openssl-devel python-devel libffi-devel gcc && \
-    mkdir -p /opt && \
-    cd /opt && \
+    cd /tmp && \
     git clone --depth 0 -b master https://github.com/maxird/elastalert.git && \
-    rm -rf ./.git && \
+    cd elastalert && \
+    python setup.py install && \
+    cd / && \
+    rm -rf /tmp/elastalert && \
+    yum -y remove openssl-devel python-devel gcc && \
     mkdir -p /opt/elastalert/rules && \
     mkdir -p /opt/elastalert/config && \
     mkdir -p /opt/elastalert/sample && \

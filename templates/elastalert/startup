@@ -3,6 +3,7 @@
 ## seed configuration if necessary
 #
 if [ ! -f /opt/elastalert/config/config.yml ]; then
+  echo 'generating config.yml'
   sed \
       -e "s|.*rules_folder:.*|rules_folder: /opt/elastalert/rules|" \
       -e "s|.*es_host:.*|es_host: ${ES_HOST:-elasticsearch}|" \
@@ -14,7 +15,7 @@ fi
 #
 url="http://${ES_HOST:-elasticsearch}:${ES_PORT:-9200}"
 while ! wget -q -T 3 -O - "${url}" 2>/dev/null; do
-    echo 'waiting for elasticsearch...'
+    echo "waiting for elasticsearch at ${url}..."
     sleep 1
 done
 
