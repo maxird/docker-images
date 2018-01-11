@@ -2,21 +2,21 @@
 
 ## seed configuration if necessary
 #
-if [ ! -f /opt/elastalert/config/config.yml ]; then
+if [ ! -f /config/config.yml ]; then
   echo 'generating config.yml'
   sed \
       -e "s|.*rules_folder:.*|rules_folder: /opt/elastalert/rules|" \
       -e "s|.*es_host:.*|es_host: ${ES_HOST:-elasticsearch}|" \
       -e "s|.*es_port:.*|es_port: ${ES_PORT:-9200}|" \
-      /opt/elastalert/sample/config.yml > /opt/elastalert/config/config.yml
+      /opt/elastalert/sample/config.yml > /config/config.yml
 fi
 
-es_host=$(grep '^es_host' /opt/elastalert/config/config.yml | awk -F ' ' '{ print $2; }')
+es_host=$(grep '^es_host' /config/config.yml | awk -F ' ' '{ print $2; }')
 if [ -z "${es_host}" ]; then
   es_host="elasticsearch"
 fi
 
-es_port=$(grep '^es_port' /opt/elastalert/config/config.yml | awk -F ' ' '{ print $2; }')
+es_port=$(grep '^es_port' /config/config.yml | awk -F ' ' '{ print $2; }')
 if [ -z "${es_port}" ]; then
   es_port="9200"
 fi
@@ -33,11 +33,11 @@ done
 #
 echo 'checking for elastalert index...'
 elastalert-create-index \
-    --config /opt/elastalert/config/config.yml \
-    --index elastalert_status \
+    --config /config/config.yml \
+    --index elastalert \
     --old-index ''
 
 ## launch elastalert
 #
 echo 'launching elastalert...'
-elastalert --verbose --config /opt/elastalert/config/config.yml $*
+elastalert --verbose --config /config/config.yml $*
