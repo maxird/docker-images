@@ -38,7 +38,9 @@ VERSIONS="
   8:144:01:090f390dda5b47b9b721c7dfaa008135
   8:151:12:e758a0de34e24606bca991d704f6dcbf
   8:152:16:aa0333dd3019491ca4f6ddbe78cdb6d0
+  8:162:12:0da788060d494f5095bf8624735fa2f1
   9:0.1:11:none
+  9:0.4:11:c2514751926b4512b076cc82f959763f
 "
 
 for b in $BASES; do
@@ -59,7 +61,11 @@ for b in $BASES; do
       process $BASE_IMAGE $b $version $filename $url $folder $jce
     else
       filename="jdk-${major}.${minor}_linux-x64_bin.rpm"
-      url="${prefix}/${major}.${minor}+${build}/${filename}"
+      if [ "${uuid}" == "none" ]; then
+        url="${prefix}/${major}.${minor}+${build}/${filename}"
+      else
+        url="${prefix}/${major}.${minor}+${build}/${uuid}/${filename}"
+      fi
       folder="jdk1.${major}.0_${minor}"
       jce=0
 
