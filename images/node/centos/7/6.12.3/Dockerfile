@@ -8,6 +8,8 @@ RUN export VERSION=6.12.3 && \
     chown -R root:root node && \
     rm node-v${VERSION}-linux-x64.tar.xz && \
     export PATH=/opt/node/bin:$PATH && \
+    npm config set user 0 && \
+    npm config set unsafe-perm true && \
     npm -g upgrade npm --log-level=warn && \
     npm -g install node-gyp nan && \
     npm -g install nodemon --production --log-level=warn && \

@@ -28,6 +28,8 @@ RUN cd /opt && \
       rm node-v${VERSION}-linux-x64.tar.xz && \
       ln -s node-v${VERSION}-linux-x64 node && \
       echo "installing $VERSION" && \
+      npm config set user 0 && \
+      npm config set unsafe-perm true && \
       npm -g upgrade npm --log-level=warn && \
       npm -g install node-gyp nan && \
       npm -g install nodemon --production --log-level=warn && \
