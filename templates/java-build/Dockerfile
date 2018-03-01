@@ -1,6 +1,6 @@
 FROM BASE_IMAGE:BASE_FROM_VERSION
 
-ENV PATH=$PATH:/opt/gradle/bin:/opt/maven/bin
+ENV PATH=$PATH:/opt/gradle/bin:/opt/maven/bin:/opt/dependency-check/bin
 
 RUN cd /tmp && \
     wget -q https://services.gradle.org/distributions/gradle-GRADLE_VERSION-bin.zip && \
@@ -18,4 +18,12 @@ RUN cd /tmp && \
     tar xf /tmp/apache-maven-MAVEN_VERSION-bin.tar.gz && \
     ln -s apache-maven-MAVEN_VERSION maven && \
     rm -f /tmp/apache-maven-MAVEN_VERSION-bin.tar.gz && \
+    echo 'done'
+
+RUN cd /tmp && \
+    wget -q http://dl.bintray.com/jeremy-long/owasp/dependency-check-DEPENDENCY_CHECK_VERSION-release.zip && \
+    mkdir -p /opt && \
+    cd /opt && \
+    unzip /tmp/dependency-check-DEPENDENCY_CHECK_VERSION-release.zip && \
+    rm -f /tmp/dependency-check-DEPENDENCY_CHECK_VERSION-release.zip && \
     echo 'done'

@@ -10,6 +10,7 @@ function process
   base=$2
   maven_version=$3
   gradle_version=$4
+  dependency_check_version=$5
   outpath="$OUTDIR/$image/$base"
   mkdir -p "$outpath"
   sed \
@@ -17,6 +18,7 @@ function process
       -e "s|BASE_FROM_VERSION|$base|g" \
       -e "s|GRADLE_VERSION|$gradle_version|g" \
       -e "s|MAVEN_VERSION|$maven_version|g" \
+      -e "s|DEPENDENCY_CHECK_VERSION|$dependency_check_version|g" \
       Dockerfile > "$outpath/Dockerfile"
 }
 
@@ -26,8 +28,9 @@ BASES="
   7-9
 "
 MAVEN_VERSION="3.5.2"
-GRADLE_VERSION="4.5"
+GRADLE_VERSION="4.6"
+DEPENDENCY_CHECK_VERSION="3.1.1"
 
 for b in $BASES; do
-  process $BASE_IMAGE $b $MAVEN_VERSION $GRADLE_VERSION
+  process $BASE_IMAGE $b $MAVEN_VERSION $GRADLE_VERSION $DEPENDENCY_CHECK_VERSION
 done
