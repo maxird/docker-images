@@ -3,12 +3,12 @@ FROM maxird/java:7-9
 ENV PATH=$PATH:/opt/gradle/bin:/opt/maven/bin:/opt/dependency-check/bin
 
 RUN cd /tmp && \
-    wget -q https://services.gradle.org/distributions/gradle-4.5-bin.zip && \
+    wget -q https://services.gradle.org/distributions/gradle-4.6-bin.zip && \
     mkdir -p /opt && \
     cd /opt && \
-    unzip /tmp/gradle-4.5-bin.zip && \
-    ln -s gradle-4.5 gradle && \
-    rm -f /tmp/gradle-4.5-bin.zip && \
+    unzip /tmp/gradle-4.6-bin.zip && \
+    ln -s gradle-4.6 gradle && \
+    rm -f /tmp/gradle-4.6-bin.zip && \
     echo 'done'
 
 RUN cd /tmp && \
@@ -26,4 +26,7 @@ RUN cd /tmp && \
     cd /opt && \
     unzip /tmp/dependency-check-3.1.1-release.zip && \
     rm -f /tmp/dependency-check-3.1.1-release.zip && \
+    file=$(find /opt/dependency-check -name '*.jar' | head -n 1) && \
+    dependency-check.sh --project seed --scan "$file" --out /tmp/seed ; \
+    rm -rf /tmp/seed && \
     echo 'done'

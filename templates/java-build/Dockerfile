@@ -26,4 +26,7 @@ RUN cd /tmp && \
     cd /opt && \
     unzip /tmp/dependency-check-DEPENDENCY_CHECK_VERSION-release.zip && \
     rm -f /tmp/dependency-check-DEPENDENCY_CHECK_VERSION-release.zip && \
+    file=$(find /opt/dependency-check -name '*.jar' | head -n 1) && \
+    dependency-check.sh --project seed --scan "$file" --out /tmp/seed ; \
+    rm -rf /tmp/seed && \
     echo 'done'
