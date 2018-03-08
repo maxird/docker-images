@@ -11,7 +11,7 @@ RUN export JQ_VERSION=1.5 && \
     export ENVCONSUL_VERSION=0.7.3 && \
     export VAULT_VERSION=0.9.5 && \
     export VAULT_SSH_HELPER_VERSION=0.1.4 && \
-    export TINI_VERSION=0.16.1 && \
+    export TINI_VERSION=0.17.0 && \
     export HAPROXY_VERSION=1.8.4 && \
     date --iso-8601 > /etc/image-date && \
     echo -e "\nclean_requirements_on_remove=1" >> /etc/yum.conf && \
