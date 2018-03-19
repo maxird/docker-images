@@ -42,7 +42,7 @@ RUN export JQ_VERSION=1.5 && \
             tar xz bzip bzip2 zip unzip \
             which \
             scl-utils \
-            haproxy openssl \
+            haproxy openssl rsyslog \
             sudo strace net-tools iproute dnsmasq nc \
             selinux-policy policycoreutils policycoreutils-python \
             libselinux-python libsemanage-python \
@@ -82,6 +82,11 @@ RUN export JQ_VERSION=1.5 && \
     rm -rf /var/cache/yum/* && \
     rm -rf /root/.cache && \
     rm -r /etc/haproxy/haproxy.cfg && \
+    rm -f /etc/rsyslog.d/listen.conf && \
+    echo '$ModLoad imudp' > /etc/rsyslog.d/0-udp.conf && \
+    echo '$UDPServerRun 514' >> /etc/rsyslog.d/0-udp.conf && \
+    echo 'local2.* /var/log/haproxy.log' > /etc/rsyslog.d/haproxy.conf && \
+    echo '& ~' >> /etc/rsyslog.d/haproxy.conf && \
     wget -q -O /usr/local/bin/jq https://github.com/stedolan/jq/releases/download/jq-${JQ_VERSION}/jq-linux64 && \
     chmod +x /usr/local/bin/jq && \
     wget -q -O /bin/tini https://github.com/krallin/tini/releases/download/v${TINI_VERSION}/tini-static-amd64 && \
