@@ -1,5 +1,12 @@
 #!/bin/bash
 
+mkdir -p /var/log
+touch /var/log/haproxy.log
+
+rsyslogd -n &
+
+tail -f /var/log/haproxy.log &
+
 ./parse.sh
 result=$?
 if [ ${result} -eq 2 ]; then

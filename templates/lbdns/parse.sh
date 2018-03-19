@@ -62,6 +62,7 @@ for line in $list; do
     CONTENT="${CONTENT}
 frontend ${name}
     bind *:${port}
+    option logasap
     http-request    set-header X-Forwarded-Port %[dst_port]
     default_backend backend-${name}
 
