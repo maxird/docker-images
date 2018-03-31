@@ -9,4 +9,12 @@ Links:
 ```shellscript
 watch 'echo "show stat" | nc -U /var/run/haproxy.stat | cut -d "," -f 1,2,5-11,18,24,27,30,36,50,37,56,57,62 | column -s, -t'
 
+## review error stats
+#
+watch 'echo "show stat" | nc -U /var/run/haproxy.stat | cut -d "," -f 1,2,11-17,18,37,41,43,82-83 | column -s, -t'
+
+## show recent errors
+#
+watch 'echo "show errors" | nc -U /var/run/haproxy.stat'
+
 ```
