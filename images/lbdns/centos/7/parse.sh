@@ -99,7 +99,7 @@ else
   diff /etc/haproxy/haproxy.cfg /tmp/new.cfg
   result=$?
 fi
-echo "result:[$result]"
+
 if [ $result -ne 0 ]; then
   echo 'updating proxy configuration...'
   mv -f /tmp/new.cfg /etc/haproxy/haproxy.cfg
