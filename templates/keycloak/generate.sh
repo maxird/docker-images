@@ -24,12 +24,6 @@ BASES="6-8 7-8"
 
 VERSIONS=" \
   1.9.8.Final \
-  2.5.5.Final \
-  3.2.1.Final \
-  3.3.0.Final \
-  3.4.0.Final \
-  3.4.1.Final \
-  3.4.2.Final \
   3.4.3.Final \
 "
 
