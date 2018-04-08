@@ -12,7 +12,7 @@ RUN export JQ_VERSION=1.5 && \
     export VAULT_VERSION=0.9.6 && \
     export VAULT_SSH_HELPER_VERSION=0.1.4 && \
     export TINI_VERSION=0.17.0 && \
-    export HAPROXY_VERSION=1.8.5 && \
+    export HAPROXY_VERSION=1.8.7 && \
     date --iso-8601 > /etc/image-date && \
     echo -e "\nclean_requirements_on_remove=1" >> /etc/yum.conf && \
     sed -i 's/.*installonly_limit=.*/installonly_limit=2/g' /etc/yum.conf && \
