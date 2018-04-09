@@ -21,11 +21,11 @@ RUN cd /tmp && \
     echo 'done'
 
 RUN cd /tmp && \
-    wget -q http://dl.bintray.com/jeremy-long/owasp/dependency-check-3.1.1-release.zip && \
+    wget -q http://dl.bintray.com/jeremy-long/owasp/dependency-check-3.1.2-release.zip && \
     mkdir -p /opt && \
     cd /opt && \
-    unzip /tmp/dependency-check-3.1.1-release.zip && \
-    rm -f /tmp/dependency-check-3.1.1-release.zip && \
+    unzip /tmp/dependency-check-3.1.2-release.zip && \
+    rm -f /tmp/dependency-check-3.1.2-release.zip && \
     file=$(find /opt/dependency-check -name '*.jar' | head -n 1) && \
     dependency-check.sh --project seed --scan "$file" --out /tmp/seed ; \
     rm -rf /tmp/seed && \
