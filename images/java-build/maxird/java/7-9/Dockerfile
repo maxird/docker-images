@@ -3,12 +3,12 @@ FROM maxird/java:7-9
 ENV PATH=$PATH:/opt/gradle/bin:/opt/maven/bin:/opt/dependency-check/bin
 
 RUN cd /tmp && \
-    wget -q https://services.gradle.org/distributions/gradle-4.6-bin.zip && \
+    wget -q https://services.gradle.org/distributions/gradle-4.7-bin.zip && \
     mkdir -p /opt && \
     cd /opt && \
-    unzip /tmp/gradle-4.6-bin.zip && \
-    ln -s gradle-4.6 gradle && \
-    rm -f /tmp/gradle-4.6-bin.zip && \
+    unzip /tmp/gradle-4.7-bin.zip && \
+    ln -s gradle-4.7 gradle && \
+    rm -f /tmp/gradle-4.7-bin.zip && \
     echo 'done'
 
 RUN cd /tmp && \
