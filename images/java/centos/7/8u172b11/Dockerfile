@@ -1,6 +1,6 @@
 FROM maxird/centos:7
 
-ENV JAVA_HOME=/usr/java/jdk1.8.0_172-amd/jre
+ENV JAVA_HOME=/usr/java/jdk1.8.0_172-amd64/jre
 
 RUN cd /tmp && \
     export COOKIE="Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" && \
