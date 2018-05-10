@@ -1,6 +1,6 @@
 FROM maxird/BASE_IMAGE:BASE_FROM_VERSION
 
-ENV JAVA_HOME=/usr/java/APP_FOLDER/jre
+ENV JAVA_HOME=/usr/java/APP_FOLDER-amd/jre
 
 RUN cd /tmp && \
     export COOKIE="Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" && \
