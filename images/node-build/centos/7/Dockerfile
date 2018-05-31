@@ -5,7 +5,7 @@ RUN cd /opt && \
     yum -y clean all && \
     rm -rf /var/cache/yum/* && \
     yum -y clean all && \
-    export ALL_VERSIONS="   8.11.1   8.11.2   10.1.0 " && \
+    export ALL_VERSIONS="   8.11.1   8.11.2   10.2.0 " && \
     export SAVED_PATH=$PATH && \
     export PATH=$PATH:/opt/node/bin && \
     mkdir -p /root/.node-gyp && \
