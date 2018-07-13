@@ -23,7 +23,7 @@ BASE_IMAGE="java"
 BASES="6-8 7-8"
 
 VERSIONS=" \
-  5.15.3 \
+  5.15.4 \
 "
 
 for b in $BASES; do
