@@ -21,7 +21,7 @@ chmod -R ugo=rwx /root/.node-gyp
 cd /app
 mkdir -p out
 cp /tmp/package.json .
-scl enable devtoolset-3 ./package.sh
+./package.sh
 rm package.json
 
 # same deal, keeps the owner as the logged in user so they

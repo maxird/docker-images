@@ -20,7 +20,7 @@ function process
 
 BASE_IMAGE="centos"
 
-BASES="6 7"
+BASES="7"
 
 VERSIONS="
   3.0.7

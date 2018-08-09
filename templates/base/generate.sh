@@ -12,5 +12,4 @@ function process
   sed -e "s|BASE_FROM_VERSION|$version|" Dockerfile > "$outpath/Dockerfile"
 }
 
-process 6
 process 7

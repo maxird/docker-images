@@ -1,10 +1,6 @@
 FROM maxird/BASE_IMAGE:BASE_FROM_VERSION
 
 RUN export VERSION=APP_VERSION && \
-    yum -y clean all && \
-    touch /var/lib/rpm/* && \
-    yum -y install gcc make && \
-    yum -y clean all && \
     cd /tmp && \
     wget -q http://download.redis.io/releases/redis-${VERSION}.tar.gz -O - | tar -xvz && \
     (cd /tmp/redis-${VERSION} && make install) && \
@@ -17,10 +13,6 @@ RUN export VERSION=APP_VERSION && \
     cp /tmp/redis-${VERSION}/sentinel.conf /opt/redis/conf/ && \
     cd / && \
     rm -rf /tmp/redis-${VERSION} && \
-    yum -y remove gcc cloog-ppl cpp glibc-devel glibc-headers kernel-headers libgomp libmpc mpfr ppl && \
-    yum -y clean all && \
-    rm -rf /var/cache/yum/* && \
-    yum -y clean all && \
     cd /usr/local/bin && \
     mkdir -p /builds && \
     tar cJf /builds/redis-${VERSION}.tar.xz redis* && \

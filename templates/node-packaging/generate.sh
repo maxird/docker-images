@@ -21,7 +21,7 @@ function process
 
 BASE_IMAGE="node-build"
 
-BASES="6 7"
+BASES="7"
 
 for b in $BASES; do
   process $BASE_IMAGE $b

@@ -50,11 +50,14 @@ RUN export JQ_VERSION=1.5 && \
             python git && \
     yum -y install \
             python-pip \
+            gcc gcc-c++ ar make \
+            python-devel \
+            pcre-static \
+            pcre-devel \
             openssl-devel \
             libffi-devel \
             dstat \
             htop && \
-    yum -y install gcc python-devel pcre-static pcre-devel && \
     pip install --upgrade pip && \
     pip install --upgrade setuptools && \
     pip install --upgrade cffi && \
@@ -78,7 +81,6 @@ RUN export JQ_VERSION=1.5 && \
     ln -sf /usr/local/sbin/haproxy /usr/sbin/haproxy && \
     cd / && \
     rm -rf /build && \
-    yum -y erase gcc python-devel pcre-devel cpp glibc-devel glibc-headers kernel-headers && \
     yum -y clean all && \
     rm -rf /var/cache/yum/* && \
     rm -rf /root/.cache && \

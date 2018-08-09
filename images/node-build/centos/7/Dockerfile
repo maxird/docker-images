@@ -1,17 +1,13 @@
 FROM maxird/centos:7
 
 RUN cd /opt && \
-    yum -y install make devtoolset-3-gcc devtoolset-3-gcc-c++ ar && \
-    yum -y clean all && \
-    rm -rf /var/cache/yum/* && \
-    yum -y clean all && \
     export ALL_VERSIONS="   8.11.1   8.11.2   8.11.3   10.8.0 " && \
     export SAVED_PATH=$PATH && \
     export PATH=$PATH:/opt/node/bin && \
     mkdir -p /root/.node-gyp && \
     chmod -R ugo=rwx /root/.node-gyp && \
     chmod -R ugo=rx /root && \
-    export ARROOT=/opt/rh/devtoolset-3/root/usr/bin && \
+    export ARROOT=/usr/bin && \
     if [ ! -f "$ARROOT/ar" ]; then export ARROOT=/usr/bin ; fi && \
     mv $ARROOT/ar $ARROOT/ar.real && \
     echo '#!/bin/bash' > $ARROOT/ar && \
