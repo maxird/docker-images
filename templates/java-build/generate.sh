@@ -25,10 +25,9 @@ function process
 BASE_IMAGE="maxird/java"
 BASES="
   7-8
-  7-9
 "
 MAVEN_VERSION="3.5.4"
-GRADLE_VERSION="4.9"
+GRADLE_VERSION="4.10"
 DEPENDENCY_CHECK_VERSION="3.3.1"
 
 for b in $BASES; do
