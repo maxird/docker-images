@@ -20,11 +20,10 @@ function process
 
 BASE_IMAGE="java"
 
-BASES="6-8 7-8"
+BASES="7-8"
 
 VERSIONS="
-  8.0.53
-  8.5.32
+  8.5.33
 "
 
 for b in $BASES; do
