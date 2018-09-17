@@ -20,14 +20,12 @@ function process
 
 BASE_IMAGE="centos"
 
-BASES="6 7"
+BASES="7"
 
 VERSIONS="
-  8.11.1
-  8.11.2
-  8.11.3
   8.11.4
-  10.9.0
+  8.12.0
+  10.10.0
 "
 
 for b in $BASES; do

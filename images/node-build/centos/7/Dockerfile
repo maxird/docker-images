@@ -1,7 +1,7 @@
 FROM maxird/centos:7
 
 RUN cd /opt && \
-    export ALL_VERSIONS="   8.11.1   8.11.2   8.11.3   8.11.4   10.9.0 " && \
+    export ALL_VERSIONS="   8.11.4   8.12.0   10.10.0 " && \
     export SAVED_PATH=$PATH && \
     export PATH=$PATH:/opt/node/bin && \
     mkdir -p /root/.node-gyp && \
