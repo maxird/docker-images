@@ -5,7 +5,7 @@ ENTRYPOINT ["/bin/tini", "-g", "--"]
 CMD ["bash"]
 
 RUN export JQ_VERSION=1.5 && \
-    export CONSUL_VERSION=1.2.2 && \
+    export CONSUL_VERSION=1.2.3 && \
     export CONSUL_REPLICATE_VERSION=0.4.0 && \
     export CONSUL_TEMPLATE_VERSION=0.19.5 && \
     export ENVCONSUL_VERSION=0.7.3 && \
