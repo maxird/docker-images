@@ -3,12 +3,12 @@ FROM maxird/java:7-8
 ENV PATH=$PATH:/opt/gradle/bin:/opt/maven/bin:/opt/dependency-check/bin
 
 RUN cd /tmp && \
-    wget -q https://services.gradle.org/distributions/gradle-4.10.1-bin.zip && \
+    wget -q https://services.gradle.org/distributions/gradle-4.10.2-bin.zip && \
     mkdir -p /opt && \
     cd /opt && \
-    unzip /tmp/gradle-4.10.1-bin.zip && \
-    ln -s gradle-4.10.1 gradle && \
-    rm -f /tmp/gradle-4.10.1-bin.zip && \
+    unzip /tmp/gradle-4.10.2-bin.zip && \
+    ln -s gradle-4.10.2 gradle && \
+    rm -f /tmp/gradle-4.10.2-bin.zip && \
     echo 'done'
 
 RUN cd /tmp && \
