@@ -113,3 +113,8 @@ RUN export JQ_VERSION=1.5 && \
     yum -y clean all && \
     rm -rf /var/cache/yum/* && \
     yum -y clean all
+
+ENV PERL5LIB=/opt/rh/rh-git29/root/usr/share/perl5/vendor_perl
+ENV X_SCLS=rh-git29
+ENV LD_LIBRARY_PATH=/opt/rh/httpd24/root/usr/lib64
+ENV PATH=/opt/rh/rh-git29/root/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
