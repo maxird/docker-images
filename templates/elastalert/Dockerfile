@@ -2,7 +2,7 @@ FROM maxird/BASE_IMAGE:BASE_FROM_VERSION
 
 RUN pip install --upgrade python-dateutil==2.6.1 && \
     cd /tmp && \
-    git clone --depth 0 -b master https://github.com/Yelp/elastalert.git && \
+    git clone --depth 1 -b master https://github.com/Yelp/elastalert.git && \
     cd elastalert && \
     python setup.py install && \
     cd / && \
