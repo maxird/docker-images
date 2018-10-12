@@ -32,7 +32,7 @@ RUN cd /tmp && \
     echo 'done'
 
 RUN cd /tmp && \
-    wget -q https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh && \
+    wget -q https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh && \
     chmod +x /tmp/install.sh && \
     /tmp/install.sh && \
     source ~/.nvm/nvm.sh && \
