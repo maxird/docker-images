@@ -12,7 +12,7 @@ RUN cd /tmp && \
     echo 'done'
 
 RUN cd /tmp && \
-    wget -q http://download.nextag.com/apache/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz && \
+    wget -q http://apache.forsale.plus/apache/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz && \
     mkdir -p /opt && \
     cd /opt && \
     tar xf /tmp/apache-maven-3.5.4-bin.tar.gz && \
