@@ -12,7 +12,7 @@ RUN cd /tmp && \
     echo 'done'
 
 RUN cd /tmp && \
-    wget -q http://apache.forsale.plus/apache/maven/maven-3/MAVEN_VERSION/binaries/apache-maven-MAVEN_VERSION-bin.tar.gz && \
+    wget -q https://archive.apache.org/dist/maven/maven-3/MAVEN_VERSION/binaries/apache-maven-MAVEN_VERSION-bin.tar.gz && \
     mkdir -p /opt && \
     cd /opt && \
     tar xf /tmp/apache-maven-MAVEN_VERSION-bin.tar.gz && \
