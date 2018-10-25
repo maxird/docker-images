@@ -6,10 +6,11 @@ CMD ["bash"]
 
 RUN export JQ_VERSION=1.5 && \
     export CONSUL_VERSION=1.3.0 && \
+    export CONSUL_K8S_VERSION=0.2.0 && \
     export CONSUL_REPLICATE_VERSION=0.4.0 && \
     export CONSUL_TEMPLATE_VERSION=0.19.5 && \
     export ENVCONSUL_VERSION=0.7.3 && \
-    export VAULT_VERSION=0.11.3 && \
+    export VAULT_VERSION=0.11.4 && \
     export VAULT_SSH_HELPER_VERSION=0.1.4 && \
     export TINI_VERSION=0.18.0 && \
     export HAPROXY_VERSION=1.8.14 && \
@@ -98,6 +99,7 @@ RUN export JQ_VERSION=1.5 && \
     chmod +x /bin/tini && \
     cd /usr/local/bin && \
     wget -q -O - https://releases.hashicorp.com/consul/${CONSUL_VERSION}/consul_${CONSUL_VERSION}_linux_amd64.zip | python -c "import zipfile,sys,StringIO;zipfile.ZipFile(StringIO.StringIO(sys.stdin.read())).extractall('.')" && \
+    wget -q -O - https://releases.hashicorp.com/consul/${CONSUL_K8S_VERSION}/consul-k8s_${CONSUL_K8S_VERSION}_linux_amd64.zip | python -c "import zipfile,sys,StringIO;zipfile.ZipFile(StringIO.StringIO(sys.stdin.read())).extractall('.')" && \
     wget -q -O - https://releases.hashicorp.com/consul-replicate/${CONSUL_REPLICATE_VERSION}/consul-replicate_${CONSUL_REPLICATE_VERSION}_linux_amd64.zip | python -c "import zipfile,sys,StringIO;zipfile.ZipFile(StringIO.StringIO(sys.stdin.read())).extractall('.')" && \
     wget -q -O - https://releases.hashicorp.com/consul-template/${CONSUL_TEMPLATE_VERSION}/consul-template_${CONSUL_TEMPLATE_VERSION}_linux_amd64.zip | python -c "import zipfile,sys,StringIO;zipfile.ZipFile(StringIO.StringIO(sys.stdin.read())).extractall('.')" && \
     wget -q -O - https://releases.hashicorp.com/envconsul/${ENVCONSUL_VERSION}/envconsul_${ENVCONSUL_VERSION}_linux_amd64.zip | python -c "import zipfile,sys,StringIO;zipfile.ZipFile(StringIO.StringIO(sys.stdin.read())).extractall('.')" && \
