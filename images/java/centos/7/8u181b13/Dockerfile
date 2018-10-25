@@ -1,7 +1,5 @@
 FROM maxird/centos:7
 
-ENV JAVA_HOME=/usr/java/jdk1.8.0_181-amd64/jre
-
 RUN yum install -y java-1.8.0-openjdk java-1.8.0-openjdk-devel && \
     export JREBIN=$(dirname $(readlink -f $(which java))) && \
     echo "JREBIN=$JREBIN" && \

@@ -1,7 +1,5 @@
 FROM maxird/BASE_IMAGE:BASE_FROM_VERSION
 
-ENV JAVA_HOME=/usr/java/APP_FOLDER-amd64/jre
-
 RUN yum install -y java-1.8.0-openjdk java-1.8.0-openjdk-devel && \
     export JREBIN=$(dirname $(readlink -f $(which java))) && \
     echo "JREBIN=$JREBIN" && \
