@@ -6,7 +6,7 @@ CMD ["bash"]
 
 RUN export JQ_VERSION=1.5 && \
     export CONSUL_VERSION=1.3.0 && \
-    export CONSUL_K8S_VERSION=0.2.0 && \
+    export CONSUL_K8S_VERSION=0.2.1 && \
     export CONSUL_REPLICATE_VERSION=0.4.0 && \
     export CONSUL_TEMPLATE_VERSION=0.19.5 && \
     export ENVCONSUL_VERSION=0.7.3 && \
