@@ -4,7 +4,7 @@ LABEL maintainer=maxird
 ENTRYPOINT ["/bin/tini", "-g", "--"]
 CMD ["bash"]
 
-RUN export JQ_VERSION=1.5 && \
+RUN export JQ_VERSION=1.6 && \
     export CONSUL_VERSION=1.3.0 && \
     export CONSUL_K8S_VERSION=0.2.1 && \
     export CONSUL_REPLICATE_VERSION=0.4.0 && \
