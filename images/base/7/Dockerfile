@@ -15,6 +15,7 @@ RUN export JQ_VERSION=1.6 && \
     export VAULT_SSH_HELPER_VERSION=0.1.4 && \
     export TINI_VERSION=0.18.0 && \
     export HAPROXY_VERSION=1.8.14 && \
+    export GOMPLATE_VERSION=3.1.0 && \
     date --iso-8601 > /etc/image-date && \
     echo -e "\nclean_requirements_on_remove=1" >> /etc/yum.conf && \
     sed -i 's/.*installonly_limit=.*/installonly_limit=2/g' /etc/yum.conf && \
@@ -98,6 +99,8 @@ RUN export JQ_VERSION=1.6 && \
     chmod +x /usr/local/bin/jq && \
     wget -q -O /bin/tini https://github.com/krallin/tini/releases/download/v${TINI_VERSION}/tini-static-amd64 && \
     chmod +x /bin/tini && \
+    wget -q -O /bin/gomplate https://github.com/hairyhenderson/gomplate/releases/download/v${GOMPLATE_VERSION}/gomplate_linux-amd64 && \
+    chmod +x /bin/gomplate && \
     cd /usr/local/bin && \
     wget -q -O - https://releases.hashicorp.com/consul/${CONSUL_VERSION}/consul_${CONSUL_VERSION}_linux_amd64.zip | python -c "import zipfile,sys,StringIO;zipfile.ZipFile(StringIO.StringIO(sys.stdin.read())).extractall('.')" && \
     wget -q -O - https://releases.hashicorp.com/consul-aws/${CONSUL_AWS_VERSION}/consul-aws_${CONSUL_AWS_VERSION}_linux_amd64.zip | python -c "import zipfile,sys,StringIO;zipfile.ZipFile(StringIO.StringIO(sys.stdin.read())).extractall('.')" && \
