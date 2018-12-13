@@ -10,6 +10,7 @@ RUN export VERSION=APP_VERSION && \
     "users" : [ {"username" : "admin", "enabled" : true, \
     "credentials" : [ {"type" : "password", "value" : "admin"} ], \
     "realmRoles" : [ "admin" ]} ]} ]' > /opt/keycloak/standalone/configuration/keycloak-add-user.json && \
+    sed -i 's/ enable-http2="true"\/>/ enable-http2="true" proxy-address-forwarding="true"\/>/g' /opt/keycloak/standalone/configuration/standalone.xml && \
     mkdir -p /opt/keycloak/standalone/data && \
     mkdir -p /opt/keycloak/standalone/log && \
     mkdir -p /opt/keycloak/standalone/tmp && \
