@@ -23,8 +23,7 @@ BASE_IMAGE="centos"
 BASES="7"
 
 VERSIONS=" \
-  8.14.0 \
-  10.14.2 \
+  8.15.0 \
   10.15.0 \
 "
 
