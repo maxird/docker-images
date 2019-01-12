@@ -3,12 +3,12 @@ FROM maxird/java:7-8
 ENV PATH=$PATH:/opt/gradle/bin:/opt/maven/bin:/opt/dependency-check/bin
 
 RUN cd /tmp && \
-    wget -q https://services.gradle.org/distributions/gradle-5.0-bin.zip && \
+    wget -q https://services.gradle.org/distributions/gradle-5.1.1-bin.zip && \
     mkdir -p /opt && \
     cd /opt && \
-    unzip /tmp/gradle-5.0-bin.zip && \
-    ln -s gradle-5.0 gradle && \
-    rm -f /tmp/gradle-5.0-bin.zip && \
+    unzip /tmp/gradle-5.1.1-bin.zip && \
+    ln -s gradle-5.1.1 gradle && \
+    rm -f /tmp/gradle-5.1.1-bin.zip && \
     echo 'done'
 
 RUN cd /tmp && \
