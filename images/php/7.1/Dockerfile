@@ -42,4 +42,4 @@ COPY docker-entrypoint.sh /docker-entrypoint.sh
 
 CMD /docker-entrypoint.sh
 
-ONBUILD COPY /docker-entrypoint.d/* /docker-entrypoint.d/
+# ONBUILD COPY /docker-entrypoint.d/* /docker-entrypoint.d/
