@@ -35,9 +35,14 @@ RUN apt-get install \
         --yes
 
 RUN a2enmod rewrite && \
-    mkdir -p /docker-entrypoint.d
+    a2enmod remoteip && \
+    mkdir -p /docker-entrypoint.d && \
+    sed -i \
+        -e '/ErrorLog/d' \
+        -e '/CustomLog/d' \
+        /etc/apache2/sites-enabled/000-default.conf
 
-COPY 000-logging.conf /etc/apache2/conf-enabled/
+COPY 999-logging.conf /etc/apache2/conf-enabled/
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 
 CMD /docker-entrypoint.sh

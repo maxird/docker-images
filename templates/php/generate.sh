@@ -13,7 +13,7 @@ function process
       -e "s|APP_VERSION|$version|" \
       Dockerfile > "$outpath/Dockerfile"
   cp $SRCDIR/docker-entrypoint.sh $outpath/
-  cp $SRCDIR/000-logging.conf $outpath/
+  cp $SRCDIR/999-logging.conf $outpath/
 }
 
 VERSIONS="
