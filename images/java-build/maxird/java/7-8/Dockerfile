@@ -3,12 +3,12 @@ FROM maxird/java:7-8
 ENV PATH=$PATH:/opt/gradle/bin:/opt/maven/bin:/opt/dependency-check/bin
 
 RUN cd /tmp && \
-    wget -q https://services.gradle.org/distributions/gradle-5.2-bin.zip && \
+    wget -q https://services.gradle.org/distributions/gradle-5.2.1-bin.zip && \
     mkdir -p /opt && \
     cd /opt && \
-    unzip /tmp/gradle-5.2-bin.zip && \
-    ln -s gradle-5.2 gradle && \
-    rm -f /tmp/gradle-5.2-bin.zip && \
+    unzip /tmp/gradle-5.2.1-bin.zip && \
+    ln -s gradle-5.2.1 gradle && \
+    rm -f /tmp/gradle-5.2.1-bin.zip && \
     echo 'done'
 
 RUN cd /tmp && \
@@ -21,11 +21,11 @@ RUN cd /tmp && \
     echo 'done'
 
 RUN cd /tmp && \
-    wget -q http://dl.bintray.com/jeremy-long/owasp/dependency-check-4.0.0-release.zip && \
+    wget -q http://dl.bintray.com/jeremy-long/owasp/dependency-check-4.0.2-release.zip && \
     mkdir -p /opt && \
     cd /opt && \
-    unzip /tmp/dependency-check-4.0.0-release.zip && \
-    rm -f /tmp/dependency-check-4.0.0-release.zip && \
+    unzip /tmp/dependency-check-4.0.2-release.zip && \
+    rm -f /tmp/dependency-check-4.0.2-release.zip && \
     file=$(find /opt/dependency-check -name '*.jar' | head -n 1) && \
     dependency-check.sh --project seed --scan "$file" --out /tmp/seed ; \
     rm -rf /tmp/seed && \
