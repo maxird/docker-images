@@ -7,11 +7,11 @@ CMD ["bash"]
 RUN export JQ_VERSION=1.6 && \
     export CONSUL_VERSION=1.4.2 && \
     export CONSUL_AWS_VERSION=0.1.1 && \
-    export CONSUL_K8S_VERSION=0.5.0 && \
+    export CONSUL_K8S_VERSION=0.6.0 && \
     export CONSUL_REPLICATE_VERSION=0.4.0 && \
-    export CONSUL_TEMPLATE_VERSION=0.19.5 && \
+    export CONSUL_TEMPLATE_VERSION=0.20.0 && \
     export ENVCONSUL_VERSION=0.7.3 && \
-    export VAULT_VERSION=1.0.2 && \
+    export VAULT_VERSION=1.0.3 && \
     export VAULT_SSH_HELPER_VERSION=0.1.4 && \
     export TINI_VERSION=0.18.0 && \
     export HAPROXY_VERSION=1.8.19 && \
