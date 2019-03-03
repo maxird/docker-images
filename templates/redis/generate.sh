@@ -23,8 +23,6 @@ BASE_IMAGE="centos"
 BASES="7"
 
 VERSIONS="
-  3.0.7
-  4.0.12
   5.0.3
 "
 
