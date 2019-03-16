@@ -5,7 +5,7 @@ ENTRYPOINT ["/bin/tini", "-g", "--"]
 CMD ["bash"]
 
 RUN export JQ_VERSION=1.6 && \
-    export CONSUL_VERSION=1.4.2 && \
+    export CONSUL_VERSION=1.4.3 && \
     export CONSUL_AWS_VERSION=0.1.1 && \
     export CONSUL_K8S_VERSION=0.6.0 && \
     export CONSUL_REPLICATE_VERSION=0.4.0 && \
@@ -15,7 +15,7 @@ RUN export JQ_VERSION=1.6 && \
     export VAULT_SSH_HELPER_VERSION=0.1.4 && \
     export TINI_VERSION=0.18.0 && \
     export HAPROXY_VERSION=1.8.19 && \
-    export GOMPLATE_VERSION=3.3.0 && \
+    export GOMPLATE_VERSION=3.3.1 && \
     date --iso-8601 > /etc/image-date && \
     echo -e "\nclean_requirements_on_remove=1" >> /etc/yum.conf && \
     sed -i 's/.*installonly_limit=.*/installonly_limit=2/g' /etc/yum.conf && \
