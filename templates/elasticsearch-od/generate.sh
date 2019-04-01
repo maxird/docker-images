@@ -21,7 +21,7 @@ function process
 BASE_IMAGE="amazon/opendistro-for-elasticsearch"
 
 BASES="
-  0.7.0
+  0.7.1
 "
 
 for b in $BASES; do
