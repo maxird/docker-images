@@ -21,10 +21,9 @@ function process
 BASE_IMAGE="docker.elastic.co/elasticsearch/elasticsearch"
 
 BASES="
-  6.5.4
-  6.6.0
   6.6.2
-  6.7.0
+  6.7.1
+  7.0.0
 "
 
 for b in $BASES; do
