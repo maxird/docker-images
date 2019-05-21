@@ -1,6 +1,7 @@
 FROM maxird/centos:7
 
 RUN pip install --upgrade python-dateutil==2.6.1 && \
+    pip install --upgrade urllib3==1.24 && \
     cd /tmp && \
     git clone --depth 1 -b master https://github.com/Yelp/elastalert.git && \
     cd elastalert && \
