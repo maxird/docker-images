@@ -3,21 +3,21 @@ FROM maxird/java:7-8
 ENV PATH=$PATH:/opt/gradle/bin:/opt/maven/bin:/opt/dependency-check/bin
 
 RUN cd /tmp && \
-    wget -q https://services.gradle.org/distributions/gradle-5.4-bin.zip && \
+    wget -q https://services.gradle.org/distributions/gradle-5.4.1-bin.zip && \
     mkdir -p /opt && \
     cd /opt && \
-    unzip /tmp/gradle-5.4-bin.zip && \
-    ln -s gradle-5.4 gradle && \
-    rm -f /tmp/gradle-5.4-bin.zip && \
+    unzip /tmp/gradle-5.4.1-bin.zip && \
+    ln -s gradle-5.4.1 gradle && \
+    rm -f /tmp/gradle-5.4.1-bin.zip && \
     echo 'done'
 
 RUN cd /tmp && \
-    wget -q https://archive.apache.org/dist/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.tar.gz && \
+    wget -q https://archive.apache.org/dist/maven/maven-3/3.6.1/binaries/apache-maven-3.6.1-bin.tar.gz && \
     mkdir -p /opt && \
     cd /opt && \
-    tar xf /tmp/apache-maven-3.6.0-bin.tar.gz && \
-    ln -s apache-maven-3.6.0 maven && \
-    rm -f /tmp/apache-maven-3.6.0-bin.tar.gz && \
+    tar xf /tmp/apache-maven-3.6.1-bin.tar.gz && \
+    ln -s apache-maven-3.6.1 maven && \
+    rm -f /tmp/apache-maven-3.6.1-bin.tar.gz && \
     echo 'done'
 
 RUN cd /tmp && \
