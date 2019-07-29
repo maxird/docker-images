@@ -16,6 +16,8 @@ function process
       -e "s|BASE_FROM_VERSION|$base|" \
       -e "s|APP_VERSION|$version|" \
       Dockerfile > "$outpath/Dockerfile"
+
+  cp prepare.sh boot.sh "$outpath/"
 }
 
 BASE_IMAGE="java"

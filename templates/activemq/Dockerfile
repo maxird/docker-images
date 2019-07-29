@@ -8,6 +8,13 @@ RUN export VERSION=APP_VERSION && \
     ln -s apache-activemq-${VERSION} activemq && \
     echo 'export PATH=$PATH:/opt/activemq/bin' > /etc/profile.d/activemq.sh
 
+COPY *.sh /
+
+RUN chmod +x /*.sh && \
+    /prepare.sh
+
 EXPOSE 1883 5672 8161 61613 61614 61616
 
-CMD ["/opt/activemq/bin/activemq", "console"]
+ENV ACTIVEMQ_MEMORY=1024
+
+CMD ["/boot.sh"]
