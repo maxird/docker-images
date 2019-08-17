@@ -23,7 +23,7 @@ BASE_IMAGE="docker.elastic.co/elasticsearch/elasticsearch"
 BASES="
   6.7.2
   6.8.1
-  7.2.0
+  7.3.0
 "
 
 for b in $BASES; do
