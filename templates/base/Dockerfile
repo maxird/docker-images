@@ -115,6 +115,17 @@ RUN export JQ_VERSION=1.6 && \
     mkdir -p /etc/profile.d && \
     echo 'export HISTCONTROL=ignoreboth:erasedups' > /etc/profile.d/bash-history.sh && \
     chmod 0644 /etc/profile.d/bash-history.sh && \
+    cd /tmp && \
+    echo 'downloading aws-cli' && \
+    curl -s https://s3.amazonaws.com/aws-cli/awscli-bundle.zip -o awscli-bundle.zip && \
+    unzip awscli-bundle.zip && \
+    echo 'installing aws-cli' && \
+    ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws && \
+    echo 'dumping version' && \
+    aws --version 2>&1 && \
+    echo 'cleanup' && \
+    rm -rf awscli-bundle.zip awscli-bundle && \
+    echo 'done' && \
     yum -y upgrade && \
     package-cleanup --oldkernels --count=1 -y && \
     yum -y clean all && \
