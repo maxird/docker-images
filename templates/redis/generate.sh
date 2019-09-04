@@ -23,7 +23,7 @@ BASE_IMAGE="centos"
 BASES="7"
 
 VERSIONS="
-  5.0.4
+  5.0.5
 "
 
 for b in $BASES; do
