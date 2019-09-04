@@ -5,14 +5,6 @@ ENTRYPOINT ["/bin/tini", "-g", "--"]
 CMD ["bash"]
 
 RUN export JQ_VERSION=1.6 && \
-    export CONSUL_VERSION=1.5.3 && \
-    export CONSUL_AWS_VERSION=0.1.1 && \
-    export CONSUL_K8S_VERSION=0.9.0 && \
-    export CONSUL_REPLICATE_VERSION=0.4.0 && \
-    export CONSUL_TEMPLATE_VERSION=0.21.0 && \
-    export ENVCONSUL_VERSION=0.8.0 && \
-    export VAULT_VERSION=1.2.1 && \
-    export VAULT_SSH_HELPER_VERSION=0.1.4 && \
     export TINI_VERSION=0.18.0 && \
     export HAPROXY_VERSION=1.8.20 && \
     export GOMPLATE_VERSION=3.5.0 && \
@@ -101,17 +93,6 @@ RUN export JQ_VERSION=1.6 && \
     chmod +x /bin/tini && \
     wget -q -O /bin/gomplate https://github.com/hairyhenderson/gomplate/releases/download/v${GOMPLATE_VERSION}/gomplate_linux-amd64 && \
     chmod +x /bin/gomplate && \
-    cd /usr/local/bin && \
-    wget -q -O - https://releases.hashicorp.com/consul/${CONSUL_VERSION}/consul_${CONSUL_VERSION}_linux_amd64.zip | python -c "import zipfile,sys,StringIO;zipfile.ZipFile(StringIO.StringIO(sys.stdin.read())).extractall('.')" && \
-    wget -q -O - https://releases.hashicorp.com/consul-aws/${CONSUL_AWS_VERSION}/consul-aws_${CONSUL_AWS_VERSION}_linux_amd64.zip | python -c "import zipfile,sys,StringIO;zipfile.ZipFile(StringIO.StringIO(sys.stdin.read())).extractall('.')" && \
-    wget -q -O - https://releases.hashicorp.com/consul-k8s/${CONSUL_K8S_VERSION}/consul-k8s_${CONSUL_K8S_VERSION}_linux_amd64.zip | python -c "import zipfile,sys,StringIO;zipfile.ZipFile(StringIO.StringIO(sys.stdin.read())).extractall('.')" && \
-    wget -q -O - https://releases.hashicorp.com/consul-replicate/${CONSUL_REPLICATE_VERSION}/consul-replicate_${CONSUL_REPLICATE_VERSION}_linux_amd64.zip | python -c "import zipfile,sys,StringIO;zipfile.ZipFile(StringIO.StringIO(sys.stdin.read())).extractall('.')" && \
-    wget -q -O - https://releases.hashicorp.com/consul-template/${CONSUL_TEMPLATE_VERSION}/consul-template_${CONSUL_TEMPLATE_VERSION}_linux_amd64.zip | python -c "import zipfile,sys,StringIO;zipfile.ZipFile(StringIO.StringIO(sys.stdin.read())).extractall('.')" && \
-    wget -q -O - https://releases.hashicorp.com/envconsul/${ENVCONSUL_VERSION}/envconsul_${ENVCONSUL_VERSION}_linux_amd64.zip | python -c "import zipfile,sys,StringIO;zipfile.ZipFile(StringIO.StringIO(sys.stdin.read())).extractall('.')" && \
-    wget -q -O - https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip | python -c "import zipfile,sys,StringIO;zipfile.ZipFile(StringIO.StringIO(sys.stdin.read())).extractall('.')" && \
-    wget -q -O - https://releases.hashicorp.com/vault-ssh-helper/${VAULT_SSH_HELPER_VERSION}/vault-ssh-helper_${VAULT_SSH_HELPER_VERSION}_linux_amd64.zip | python -c "import zipfile,sys,StringIO;zipfile.ZipFile(StringIO.StringIO(sys.stdin.read())).extractall('.')" && \
-    chmod +x consul* envconsul vault* && \
-    mkdir -p /etc/consul.d && \
     mkdir -p /etc/profile.d && \
     echo 'export HISTCONTROL=ignoreboth:erasedups' > /etc/profile.d/bash-history.sh && \
     chmod 0644 /etc/profile.d/bash-history.sh && \
