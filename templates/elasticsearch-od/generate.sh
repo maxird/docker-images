@@ -21,11 +21,11 @@ function process
 BASE_IMAGE="amazon/opendistro-for-elasticsearch"
 
 BASES="
-  0.9.0
-  1.0.2
-  1.1.0
+  1.1.0:7.1.1
 "
 
 for b in $BASES; do
-  process $BASE_IMAGE $b $b
+  od_base=$(echo "$b" | awk -F ':' '{ print $1; }')
+  es_base=$(echo "$b" | awk -F ':' '{ print $2; }')
+  process $BASE_IMAGE $od_base $es_base
 done
