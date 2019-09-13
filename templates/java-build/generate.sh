@@ -25,6 +25,7 @@ function process
 BASE_IMAGE="maxird/java"
 BASES="
   7-8
+  7-11
 "
 MAVEN_VERSION="3.6.1"
 GRADLE_VERSION="5.6.1"
