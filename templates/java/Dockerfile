@@ -1,6 +1,7 @@
 FROM maxird/BASE_IMAGE:BASE_FROM_VERSION
 
-RUN yum install -y java-APP_VERSION-openjdk java-APP_VERSION-openjdk-devel && \
+RUN echo 'starting' && \
+    yum -y localinstall APP_URL && \
     echo 'done'
 RUN echo 'start' && \
     export JREBIN=$(dirname $(readlink -f $(which java))) && \
