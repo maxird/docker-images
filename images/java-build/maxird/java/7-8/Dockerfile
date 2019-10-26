@@ -3,29 +3,29 @@ FROM maxird/java:7-8
 ENV PATH=$PATH:/opt/gradle/bin:/opt/maven/bin:/opt/dependency-check/bin
 
 RUN cd /tmp && \
-    wget -q https://services.gradle.org/distributions/gradle-5.6.1-bin.zip && \
+    wget -q https://services.gradle.org/distributions/gradle-5.6.3-bin.zip && \
     mkdir -p /opt && \
     cd /opt && \
-    unzip /tmp/gradle-5.6.1-bin.zip && \
-    ln -s gradle-5.6.1 gradle && \
-    rm -f /tmp/gradle-5.6.1-bin.zip && \
+    unzip /tmp/gradle-5.6.3-bin.zip && \
+    ln -s gradle-5.6.3 gradle && \
+    rm -f /tmp/gradle-5.6.3-bin.zip && \
     echo 'done'
 
 RUN cd /tmp && \
-    wget -q https://archive.apache.org/dist/maven/maven-3/3.6.1/binaries/apache-maven-3.6.1-bin.tar.gz && \
+    wget -q https://archive.apache.org/dist/maven/maven-3/3.6.2/binaries/apache-maven-3.6.2-bin.tar.gz && \
     mkdir -p /opt && \
     cd /opt && \
-    tar xf /tmp/apache-maven-3.6.1-bin.tar.gz && \
-    ln -s apache-maven-3.6.1 maven && \
-    rm -f /tmp/apache-maven-3.6.1-bin.tar.gz && \
+    tar xf /tmp/apache-maven-3.6.2-bin.tar.gz && \
+    ln -s apache-maven-3.6.2 maven && \
+    rm -f /tmp/apache-maven-3.6.2-bin.tar.gz && \
     echo 'done'
 
 RUN cd /tmp && \
-    wget -q http://dl.bintray.com/jeremy-long/owasp/dependency-check-4.0.2-release.zip && \
+    wget -q http://dl.bintray.com/jeremy-long/owasp/dependency-check-5.2.2-release.zip && \
     mkdir -p /opt && \
     cd /opt && \
-    unzip /tmp/dependency-check-4.0.2-release.zip && \
-    rm -f /tmp/dependency-check-4.0.2-release.zip && \
+    unzip /tmp/dependency-check-5.2.2-release.zip && \
+    rm -f /tmp/dependency-check-5.2.2-release.zip && \
     file=$(find /opt/dependency-check -name '*.jar' | head -n 1) && \
     dependency-check.sh --project seed --scan "$file" --out /tmp/seed ; \
     rm -rf /tmp/seed && \
