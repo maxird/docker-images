@@ -6,7 +6,7 @@ CMD ["bash"]
 
 RUN export JQ_VERSION=1.6 && \
     export TINI_VERSION=0.18.0 && \
-    export HAPROXY_VERSION=1.8.20 && \
+    export HAPROXY_VERSION=1.8.22 && \
     export GOMPLATE_VERSION=3.5.0 && \
     date --iso-8601 > /etc/image-date && \
     echo -e "\nclean_requirements_on_remove=1" >> /etc/yum.conf && \
