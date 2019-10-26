@@ -1,7 +1,7 @@
 FROM maxird/centos:7
 
 RUN echo 'starting' && \
-    yum -y localinstall https://d3pxv6yz143wms.cloudfront.net/11.0.4.11.1/java-11-amazon-corretto-devel-11.0.4.11-1.x86_64.rpm && \
+    yum -y localinstall https://d3pxv6yz143wms.cloudfront.net/11.0.5.10.1/java-11-amazon-corretto-devel-11.0.5.10-1.x86_64.rpm && \
     echo 'done'
 RUN echo 'start' && \
     export JREBIN=$(dirname $(readlink -f $(which java))) && \
